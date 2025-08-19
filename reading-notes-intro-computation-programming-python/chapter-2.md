@@ -156,3 +156,73 @@ see `nested_loops` in [code](/code/chap_2_code.py)
 ### finger exercice
 [code](code/finger-ex-2-6.py)
 
+## 2.7 Style matters
+
+> Just as style matters when writing in English, style matters when writing in Python. However, while having a distinctive voice might be an asset for a novelist, it is not an asset for a programmer. The less time readers of a program have to spend thinking about things irrelevant to the meaning of the code, the better.
+
+Most Python programmers follow the conventions laid out in the **PEP 8 style guide**.
+PEP is an acronym standing for “Python Enhancement Proposal.” PEP 8 was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan.
+
+> if everyone uses the same set of conventions when writing Python, readers can concentrate on understanding the semantics of the code rather than wasting mental cycles assimilating stylistic decisions.
+
+## 2.8 Terms Introduced in Chapter
+
+- low-level language
+- high-level language
+- interpreted language
+- compiled language
+- source code
+- machine code
+- Python
+- integrated development environment (IDE)
+- Anaconda
+- Spyder
+- IPython console
+- shell
+- program (script)
+- command (statement)
+- object
+- type
+- scalar object
+- non-scalar object
+- literal
+- floating point
+- bool
+- None
+- operator
+- expression
+- value
+- shell prompt
+- variable
+- binding
+- assignment
+- reserved word
+- comment (in code)
+- straight-line program
+- branching program
+- conditional
+- indentation (in Python)
+- nested statement
+- compound expression
+- constant time
+- computational complexity
+- conditional expression
+- strings
+- overloaded operator
+- repetition operator
+- type checking
+- indexing
+- slicing
+- type conversion (casting)
+- formatted string expression
+- input
+- Unicode
+- iteration (looping) pseudocode
+- while loop
+- hand simulation
+- break
+- for loop
+- tuple
+- range
+- in operator
+- PEP 8 style guide
