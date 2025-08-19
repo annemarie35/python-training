@@ -46,14 +46,12 @@ def find_largest_odd_number():
 find_largest_odd_number()
 
 def find_largest_odd_number_refacto_while():
-    nb_1, nb_2, nb_3, nb_4, nb_5, nb_6, nb_7, nb_8, nb_9, nb_10 = input('Write 10 numbers separated by a space: ').split()
+    # test with 56 4 234 7 89 65 0 45 3 90
+    numbers_list = input('Write 10 numbers separated by a space: ')
     largest_odd_number = -1
-    x = 1
-    while True:
-        print(f'nb_{x}')
-        if int(f'nb_{x}') % 2 != 0:
-            break
-        x = x + 1
+    for number in numbers_list.split():
+        if int(number) % 2 != 0 and int(number)  > largest_odd_number:
+            largest_odd_number = int(number)
 
     print(f'The largest odd number is {largest_odd_number}')
     if largest_odd_number < 0:

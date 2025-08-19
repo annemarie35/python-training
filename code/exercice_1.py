@@ -6,3 +6,5 @@ def min(x, y, z):
     if z%2 != 0 and z > answer:
         answer = z
     print(answer)
+
+min(5, 145, 8)
