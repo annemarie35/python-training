@@ -31,3 +31,6 @@ Early computers were fixed-program computers, exemple in 1941 Atanasoff and Berr
 - syntax
 - static semantics
 - semantics
+
+
+[Slides](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec1/)
