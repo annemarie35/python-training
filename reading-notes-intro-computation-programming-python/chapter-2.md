@@ -127,11 +127,32 @@ we can use a **while** statement
 **hand-simulating** the code using a pen and a paper or even a text editor
 
 ### finger exercice
+[code](code/finger-ex-2-5.py)
+
+## 2.6 For loop and range
+
+iterating over a sequence, 'for variable in sequence'
 ```python
-def while_loop():
-    print_nb = input('How many times should i print the letter X?')
-    to_print = 'x' * int(print_nb)
-    print(to_print)
- 
-while_loop()
+  total = 0
+  for num in (77, 11, 3):
+      total = total + num
+  print(total)
 ```
+The **variable** following for **is bound** to the first value in the sequence, and the code block is **executed**.
+The expression (77, 11, 3) is a **tuple**, as a "sequence of value"
+
+The built-in function **range** can generate a sequence of values, it will return a series of integers. It takes 3 int as argument with default values (can be negative) : start, stop and step.
+```python
+x= 4
+for i in range(x):
+print(i)
+```
+prints 0 1 2 3
+
+the arguments of the range function are evaluated just before the first iteration loop
+with nested loop, only the outer loop is concerned, the index of the inner loop will be reevaluated
+see `nested_loops` in [code](/code/chap_2_code.py) 
+
+### finger exercice
+[code](code/finger-ex-2-6.py)
+
