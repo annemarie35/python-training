@@ -1,23 +1,4 @@
-# Notes
-
-I start reading the book from [Introduction to Computer Science and Programming in Python MIT course](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/) by John B. Guttag, released in 2021
-
-`Introduction to Computation and Programming Using Python, Third Edition
-John V. Guttag;`
-
-## Chapitre 1
-
-> A computer does two things, and two things only: it performs calculations and it remembers the results of those calculations. But it does those two things very well.
-
-Computationnel thinking 
-Knowledge can be thought as either **declarative**(statement of facts) or **imperative** (how to knowledge or recipes)
-Algorithm : a sequence of simple steps with a flow of control that specifies when to execute each steps. 
-
-Early computers were fixed-program computers, exemple in 1941 Atanasoff and Berry or Turing's machine
-
-//TODO Add vocabulary here
-
-## Chapitre 2
+# 2. Introduction to Python
 
 //TODO Add vocabulary here
 
@@ -54,7 +35,7 @@ x,y = 2, 3 #multiple assignement
 ```
 "In Python, a variable is just a name, nothing more. Remember this—it is important. An assignment statement associates the name to the left of the = symbol with the object denoted by the expression to the right of the = symbol. Remember this too: an object can have one, more than one, or no name associated with it"
 
-### 2.3 Branching programs
+## 2.3 Branching programs
 
 straight-line programs : computation that execute one statement after another in the order in which they appear
 branching programs : simplest branching statement is conditional.
@@ -87,7 +68,7 @@ It is often convenient to use a **compound Boolean expression** in the test of a
 
 <---------------------------------------- TODO Read again this part ----------------------------------------------------->
 
-### 2.4 Strings and input
+## 2.4 Strings and input
 
 '123' is a type string of 3 characters, not a number
 operator + is **overloaded** with type strings, addition with 2 numbers but concatenation with strings
@@ -134,7 +115,7 @@ for example :
 instructs Python to use UTF-8, the most frequently used character encoding for webpages.18 If you don't have such a comment in your program, most Python implementations will default to UTF-8.
 In 2016, 85% of websites were encoded using UTF-8
 
-### 2.4.5 While loops
+## 2.5 While loops
 most computational tasks cannot be accomplished using branching programs
 we use iteration when we want a program to do the same thing many times, a generic iteration also called a **looping**
 begins with a **test** like a **conditional statement** 
@@ -145,6 +126,7 @@ we can use a **while** statement
 
 **hand-simulating** the code using a pen and a paper or even a text editor
 
+### finger exercice
 ```python
 def while_loop():
     print_nb = input('How many times should i print the letter X?')
