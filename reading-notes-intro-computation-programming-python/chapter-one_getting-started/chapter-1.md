@@ -2,7 +2,7 @@
 
 > A computer does two things, and two things only: it performs calculations and it remembers the results of those calculations. But it does those two things very well.
 
-Computationnel thinking 
+Computational thinking 
 Knowledge can be thought as either **declarative**(statement of facts) or **imperative** (how to knowledge or recipes)
 Algorithm : a sequence of simple steps with a flow of control that specifies when to execute each steps. 
 
@@ -31,3 +31,6 @@ Early computers were fixed-program computers, exemple in 1941 Atanasoff and Berr
 - syntax
 - static semantics
 - semantics
+
+
+[Slides](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec1/)
