@@ -34,3 +34,6 @@ Early computers were fixed-program computers, exemple in 1941 Atanasoff and Berr
 
 
 [Slides](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_lec1/)
+
+> Future : Most computers are universal, and are able to calculate any computable function, and are limited only by their memory capacity and operating speed.
+[source](https://en.wikipedia.org/wiki/Computer)
