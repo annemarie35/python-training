@@ -45,3 +45,43 @@ Start searching in the middle then reduce the search space by only a small amoun
 At each iteration of the loop, the size of the space to be searched is cut in half. For this reason, the algorithm is called **bisection search**.
 
 `find_square_root_bisection(123456789)` takes only 45 guesses
+
+
+## 3.3 A Few Words about Using Floats
+
+Floats are a good approximation to real numbers but only most of the time, can lead to surprising consequences.
+`0.9999999999999999 is not 1.0`
+
+Binary numbers
+> A sequence of length n can represent 10n different numbers.
+
+
+> using == to compare two floating-point values can produce a surprising result.
+> It is almost always more appropriate to ask whether two floating point values are close enough to each other, not whether they are identical.
+> So, for example, it is better to write abs(x‑y) < 0.0001 rather than x == y»
+
+## 3.4 Newton–Raphson
+
+## 3.5 Terms Introduced in Chapter
+
+- decrementing
+- function
+- guess-and-check
+- exhaustive enumeration
+- approximation
+- total ordering
+- bisection search 
+- successive approximation
+- binary numbers
+- bit
+- switch
+- floating point
+- significant digits
+- exponent
+- precision
+- rounding
+- Newton–Raphson
+- polynomial
+- coefficient
+- degree
+- root
