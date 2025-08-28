@@ -1,4 +1,4 @@
-# 2. Introduction to Python
+# Introduction to Python
 
 //TODO Add vocabulary here
 
@@ -6,36 +6,143 @@
 Python 2.0 in 2000
 Python 3.0 in 2008
 
-A python program, sometimes called a **script**, is a sequence of definitions and sequences.
-The Python interpreter in the shell evaluates the definitions and executes the **commands**.
-A command, often called a statement, instructs the interpreter to do something
+
+## Script, interpreter
+
+A python `program`, sometimes called a `script`, is a sequence of `definitions` and `commands`.
+
+A `command`, often called a `statement`, instructs the `interpreter` to do something.
+
+When given a script, the Python interpreter will evaluate the definitions and executes the `commands`.
+
+If the interpreter is launched from the shell and is given the script below, this will cause the message `Hello world!` to displayed on the shell standard output.
 ```python
 print('Hello world!')
 ```
 
-Objects are chore things manipulated by Python, they have a type that can be scalar (indivisible) or non-scalar (for ex strings with internal structure)
-literals can represent a number 2 or a string 'abc'
+## Basics
 
-- 4 scalars types : int, float, bool, None
+### Objects
 
-Objects and operators can be combined to form expressions. This is called the **value** of an expression.
-Each expression evaluates to an object of some type. The expression below denotes the object 5.0 of type float
+Objects are chore things manipulated by the program.
+
+### Type
+
+Objects have a type.
+
+There are two type categories: 
+- scalar (indivisible), e.g. the value `12`; 
+- non-scalar (divisible), e.g. the string `Hello,world`, which can be split into `Hello,` and `world`. 
+
+There are 4 scalars types : 
+- `int` (standing for integer), eg `3` ;
+- `float` (standing for floating-point number) , eg `3.0` ;
+- `bool` (standing for boolean), which has two values : `True`, `False` ;
+- `None`, which has one value : `Node`.
+
+Scalar types are native to the language, you can't create a new scalar type. But you can create you own non-scalar type.
+
+### Operators
+
+Each type accept some operator.
+
+The `int` and `float` types accepts these: 
+* + : addition (plus)
+* - : substraction (minus)
+* * : multiplication/product (star)
+* // : floor division  
+* / : division (slash)
+* % : remainder (percent)
+* ** : power
+
+The `bool` type accept these:
+- and
+- or
+- not
+
+### Expression
+
+`Objects` and `operators` can be combined to form `expressions`.
+
+The evaluation of an `expression` produce an `object`, called the `value` of an expression.
+
 ```python
-3.0 + 2.0
+3 + 2
 ```
 
-operators on objects of type int and float are + - * // / % **
-the primitive operators on type bool are and, or, and not»
+In the expression above:
+- `3` and `2` are `objects` of type int;
+- `+` is a `operator`;
+- `3 + 2` is an `expression`;
+- the `value` of this `expression` is object `5`.
 
-### 2.2.2 Variables and assignements
-variables provide a way to associate names with object
+The `==` (double equal) operator is a special operator: it tests if two expressions evaluate to the same value.
+It returns a boolean value.
+
 ```python
-radius = 11 #this is a comment
-x,y = 2, 3 #multiple assignement
+(3 + 2) == 5 
 ```
-"In Python, a variable is just a name, nothing more. Remember this—it is important. An assignment statement associates the name to the left of the = symbol with the object denoted by the expression to the right of the = symbol. Remember this too: an object can have one, more than one, or no name associated with it"
 
-## 2.3 Branching programs
+### Variables and assignments
+
+`variables` provide a way to associate `names` with `object`.
+
+The `=` (equal) operator : 
+- associate a `name` to an `object`;
+- define a `variable`, it is called a `definition`.
+
+Here :
+- the name `radius` is associated with the object whose value is 11
+- the variable `radius` is defined.
+
+```python
+radius = 11
+```
+
+> In Python, a variable is just a name, nothing more. Remember this — it is important. An assignment statement associates the name to the left of the = symbol with the object denoted by the expression to the right of the = symbol. Remember this too: an object can have one, more than one, or no name associated with it
+
+You can assign multiple values at once: it is called multiple assignment.
+```python
+x,y = 2, 3 
+```
+
+### mutability
+
+An object can be mutable or immutable according to its type, e.g. `int` type are immutable.
+
+Below, you don't change the value of object `1` to `2`.
+You change the object assigned to the variable.
+There are two objects, `1` and `2`, and object `1` has no name associated with it anymore at line 2.
+```python
+x = 1
+x = 2
+```
+
+### literal and denotation
+
+> Many objects can be denoted by literals in the text of a program.
+> For example, the text 2 is a literal representing a number and the text abc is a literal representing a string.
+
+The script below contains a line, with the text `2`.
+```python
+2
+```
+
+The interpreter will :
+- identify this line as an expression;
+- evaluate this expression to an object.
+
+We'll say that :
+- the literal `2`; 
+- `denote` the object whose value is `2`.
+
+This is tricky: 
+- the `literal` is part of the program `source code`;
+- the `object` is part of the program `execution`, stored in memory. 
+
+## Control structures
+
+### Branching programs
 
 straight-line programs : computation that execute one statement after another in the order in which they appear
 branching programs : simplest branching statement is conditional.
