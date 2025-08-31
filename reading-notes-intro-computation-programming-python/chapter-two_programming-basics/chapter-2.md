@@ -267,10 +267,13 @@ see `nested_loops` in [code](/code/chap_2_code.py)
 
 > Just as style matters when writing in English, style matters when writing in Python. However, while having a distinctive voice might be an asset for a novelist, it is not an asset for a programmer. The less time readers of a program have to spend thinking about things irrelevant to the meaning of the code, the better.
 
-Most Python programmers follow the conventions laid out in the **PEP 8 style guide**.
+Most Python programmers follow the conventions laid out in [PEP 8 style guide](https://peps.python.org/pep-0008/)
 PEP is an acronym standing for “Python Enhancement Proposal.” PEP 8 was written in 2001 by Guido van Rossum, Barry Warsaw, and Nick Coghlan.
 
 > if everyone uses the same set of conventions when writing Python, readers can concentrate on understanding the semantics of the code rather than wasting mental cycles assimilating stylistic decisions.
+
+As stated in the famous [Zen of Python](https://peps.python.org/pep-0020/) in 1999
+> Readability counts.
 
 ## 2.8 Terms Introduced in Chapter
 
