@@ -22,7 +22,7 @@ If the interpreter is launched from the shell and is given the script below, thi
 print('Hello world!')
 ```
 
-## Basics
+## Objects, type, expression, variable
 
 ### Objects
 
@@ -143,7 +143,7 @@ type(2 * 1.0) == float # True
 ```
 When an operator combine two objects, it evaluates to the type which has a greater scale (here, float).
 
-The conversion can be explicit, using a function named from the type.
+The conversion can be explicit, using a function named from the type, it is named `casting`.
 ```python
 int('32') == 32    # True
 float(32) == 32.0  # True
@@ -155,6 +155,37 @@ E.g., when converting from`float` to `int`, the number is truncated to the integ
 ```python
 int(4.1) == 4 # true
 ```
+
+[Wikipedia](https://en.wikipedia.org/wiki/Type_conversion) points out that :
+- there are two conversion types :
+   - the underlying data representation is `converted` from one representation into another, e.g. `int` to `float`, so precision may be lost;
+   - a given representation is merely `reinterpreted` as the representation of another data type, e.g. `int` to `string`, so precision will not be lost;
+- conversion is ruled by the typing paradigm :
+    - strongly-typed languages do little `implicit conversion` and discourage `reinterpretation`;
+    - weakly-typed languages do many `implicit conversions` and does not discourage `reinterpretation`.
+
+
+### Type checking
+
+Python has type checking, not as strong as strongly-typed language like Java. 
+```python
+'123' == 123         # False
+```
+
+Even if Python is weakly typed, it has stronger type checking than Javascript : the behaviour of `==` operator is different.
+```js
+'123' == 123   # true
+'123' === 123  # false
+```
+
+Another example of type checking, for the repetition `*` operator.
+```python
+'hello' * 'world'
+```
+
+This operator expect an `int` as argument, so the expression below throws an error.
+
+Python is dynamically typed, we'll see that in the [type-dedicated chapter](../chapter-for_typing).
 
 ### literal and denotation
 
@@ -184,11 +215,13 @@ If you run the program two times:
 - the literal will stay the same;
 - the object will not be te same.
 
-### strings
+## Text manipulation
+
+### string type
 
 Text (sequence of character) is stored in python in the string type, named `str`. There is no type for a single character. 
 
-#### denotation
+### denotation
 
 To `denote` text, quotes (simple or double) are used.
 ```python
@@ -205,7 +238,7 @@ Do not get confused with Javascript :
 '123' === 123  # false
 ```
 
-#### input
+### input
 
 If you don't know the value of the text, you can't denote it. That happens if you want the user to supply the text, so yo can use `input` function.
 
@@ -222,15 +255,15 @@ def birthday():
     print(f'You were born in the year {birthday[6:10]}')
 ```
 
-#### operators, overloading
+### operators, overloading
 
 > The operator + is said to be overloaded because it has different meanings depending upon the types of objects to which it is applied.
 
-operator +:
+`+` operator :
 - type number: addition
 - type string: concatenation
 
-operator * :
+`*` operator :
 - type int: multiplication / product
 - type string: repetition 
 
@@ -238,7 +271,7 @@ operator * :
 3 * "a" == 'aaa' # True
 ```
 
-#### operator, functions
+### operate on text
 
 ##### length
 
@@ -248,11 +281,50 @@ The `len` function returns the length (character count) of a string.
 len('abc') == 3 # True
 ```
 
-####
-indexing : 'abc'[0] -> 'a'/ Error if out of range like 'abc'[10] / 'abc'[-1] -> 'c'
-slicing : abc'[0:len('abc')] -> 'abc' / 'abc'[:] -> 'abc' (if values are omited around colon, defaults values are 0 and string length)
- 
+##### extracting
 
+As the string is [non-scalar](#type) type, you can access its individual parts.
+
+It is a `zero-based` array :
+- text start at `index` 0;
+- text end at index (length - 1).
+
+To access a character, use the bracket operator `[index]`:
+- if an index is out of range, you get an error;
+- if the index is negative `[-n]`, you get the nth last character, which is (length - n) index.
+
+```python
+'abc'[0] == 'a'   # True
+'abc'[3]          # IndexError: string index out of range
+'abcd'[-2] == 'c' # True
+'abc'[-3] == 'a'  # True
+'abc'[-4]         # IndexError: string index out of range
+```
+
+To access a sequence of character, aka a substring, use the slice operator.
+The slice operator is the bracket operator with two parameters : `[start:end]`.
+
+The selection :
+- begins at `start` index (lower bound), including; 
+- stop at `end` index (upper bound), excluding - which may be surprising.
+
+The matching mathematics interval is `[start:end[`.
+
+```python
+'abc'[1:2] == 'c'  # True
+'abc'[1:3] == 'bc' # True
+'abc'[0:len('abc')] == 'abc' # True
+```
+
+If values are omitted around colon, defaults values are : 
+- start : 0;
+- end : string length.
+
+```python
+'abc'[:] == 'abc' # True
+``` 
+
+##### printing
 **f-string** since Python 3.6
 f or F following by a special kind od string literal called a **formatted string literal** : expressions bracketed by curly braces (double curly when having a curly inside)
 `print(f'{25+25} is {1/2*100}% of {50*2}')` -> `50 is 50.0% of 100`
@@ -260,42 +332,20 @@ f or F following by a special kind od string literal called a **formatted string
 We can use modifiers in the expression inside a f-string adding a colon after `print(f'{3.14159:.2}')` -> 3.1 / `print(f'{15000000:,.0f}')` -> 15,000,000
 
 
+### character encoding
 
-#### Disgression about character encoding
-- ASCII standard for internal representation of characters, 128 were used for representing the usual set of english langague
-- The **Unicode standard** is a character coding system designed to support the digital processing and display of the written texts of all languages. The standard contains more than 120,000 characters—covering 129 modern and historic scripts and multiple symbol sets. The Unicode standard can be implemented using different internal character encodings. You can tell Python which encoding to use by inserting a comment of the form
+ASCII is the historical standard for internal representation of characters, which allow 128 characters. This was enough for representing the usual set of english language.
 
+Unicode is a `standard` for character encoding system designed to support the digital processing and display of the written texts of all languages. The standard contains more than 120,000 characters—covering 129 modern and historic scripts and multiple symbol sets. 
+
+The Unicode standard can be implemented using different internal character encodings. 
+The most frequently used character encoding for webpages is UTF-8 (85% of websites in 2016).
+
+You can tell Python which encoding to use to read teh file by inserting a special comment (UTF-8 is the default).
 ```
-# -*- coding: encoding name -* 
-for example :
+# -*- coding: $ENCODING_NAME -*- 
 # -*- coding: utf-8 -*-
-
 ```
-
-instructs Python to use UTF-8, the most frequently used character encoding for webpages.18 If you don't have such a comment in your program, most Python implementations will default to UTF-8.
-In 2016, 85% of websites were encoded using UTF-8
-
-### Type checking
-
-Python has type checking, not as strong as strongly-typed language like Java. 
-```python
-'123' == 123         # False
-```
-
-Even if Python is weakly typed, it has stronger type checking than Javascript : the behaviour of `==` operator is different.
-```js
-'123' == 123   # true
-'123' === 123  # false
-```
-
-Another example of type checking, for the repetition `*` operator.
-```python
-'hello' * 'world'
-```
-
-This operator expect an `int` as argument, so the expression below throws an error.
-
-Python is dynamically typed, we'll see that in the [type-dedicated chapter](../chapter-for_typing).
 
 ## Control structures
 
