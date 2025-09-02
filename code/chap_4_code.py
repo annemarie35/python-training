@@ -109,3 +109,39 @@ x = 3
 f()
 x = 67975765
 g()
+
+# Splitting find_root into multiple functions figure 4.8
+
+def find_root_bounds(x_val, power):
+    """x a float, power a positive int return low, high such that low**power <= x and high**power >= x.
+    """
+    low = min(-1, x_val)
+    high = max(1, x_val)
+    return low, high
+
+def bisection_solve(x_val, power, epsilon, low, high):
+    """
+    x, epsilon, low, high are floats, epsilon > 0
+    low <= high and there is an answer between low and high such that ans**power is within epsilon of x.
+    returns answer such that ans**power is within epsilon of x.
+    """
+    ans = (high+low)/2
+    while abs(ans**power - x_val) >= epsilon:
+        if ans**power < x_val:
+            low = ans
+        else:
+            high = ans
+        ans = (high+low)/2
+    return ans
+
+def find_root_refactored(x_vals, power, epsilon):
+    """
+    Assumes x and epsilon int or float, power an int, epsilon > 0 & power >= 1.
+    Returns float y such that y**(power) is between epsilon of x.
+    If such float does not exist, it returns None.
+    """
+    if x_vals < 0 or epsilon < 0 or power < 1:
+        return None
+
+    low, right = find_root_bounds(x_vals, power)
+    return bisection_solve(x_vals, power, epsilon, low, right)

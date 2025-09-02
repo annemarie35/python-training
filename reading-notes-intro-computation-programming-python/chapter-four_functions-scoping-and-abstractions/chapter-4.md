@@ -215,7 +215,12 @@ If you enter help(), an interactive help session is started, and the interpreter
 Type for example, `if` to display a description of the `if statement` 
 Interactive help can be exited by entering quit.
 
-## 4.3 Using functions to modularize code
+## Using functions to modularize code
+
+Split a function monolithic `implementation` into multiple functions, each of which does a simple thing and has its own specifications.
+Keep in mind that it should be easier to understand.
+
+> A good rule of thumb is that if a function fits comfortably on a single page, it probably doesn't need to be subdivided to be easily understood.
 
 ## 4.4 Function as objects
 
