@@ -188,7 +188,32 @@ It prints 3 when f is invoked, but the error message `UnboundLocalError: local v
 
 > In fact, if your program depends upon some subtle scoping rule, you might consider rewriting to avoid doing so.
 
-## 4.2 Specifications
+## Specifications
+
+A `specification` of a function defines a `contract` between the implementer and the users of the function, aka its `clients`, with two parts:
+- `assumptions`: describes conditions that must be met by the clients, typically constraints on actual parameters e.g. acceptable set of type and value (less frequent). For example, the specification of find_root might require that power be a positive integer.
+- `guarantees`: describes conditions that must be met by the function, provided it has been called in a way that satisfies the assumptions. For example, the specification of find_root might guarantee that it returns None if asked to find a root that doesn't exist (e.g., the square root of a negative number).
+
+Functions are a way of creating `computational elements` that we can think as `primitives` in two ways:
+
+- `decomposition`: it creates structure. It allows us to **break a program into parts**
+  - that are reasonably self-contained 
+  - and that may be reused in different settings.
+- `abstraction`: hides details. It allows us to use a piece of code as if it were a `black box`, that is, something whose interior details we
+cannot see, don't need to see, and shouldn't even want to see. Abstraction is all about forgetting.
+> That (abstraction) is the true art of programming. 
+
+### Docstring & interactive help
+The text between the triple quotation marks is called a `docstring` in Python.
+By convention, Python programmers use docstrings to provide specifications of functions.
+These docstrings can be accessed using the built-in function `help`, just typing in the IDE's python console:
+```python
+help(abs)
+```
+
+If you enter help(), an interactive help session is started, and the interpreter will present the prompt help> in the console window.
+Type for example, `if` to display a description of the `if statement` 
+Interactive help can be exited by entering quit.
 
 ## 4.3 Using functions to modularize code
 

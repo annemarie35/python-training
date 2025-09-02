@@ -1,5 +1,10 @@
 def find_root(x, power, epsilon):
     # Find interval containing answer
+    # Below is docstring that will be displayed when using the built-in function help:
+    """Assumes x and epsilon int or float, power an int, epsilon > 0 & power >= 1.
+    Returns float y such that y**(power) is between epsilon of x.
+    If such float does not exist, it returns None.
+    """
     if x < 0 and power%2 == 0:
         return None #Negative number as no even-powered roots
     low = min(-1, x)
@@ -97,7 +102,7 @@ def f():
     print('x in f =', x)
 
 def g():
-    print('x in g =', x)
+    # print('x in g =', x)
     x = 1
 
 x = 3
