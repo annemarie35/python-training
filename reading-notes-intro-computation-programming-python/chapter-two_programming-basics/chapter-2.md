@@ -299,10 +299,34 @@ Python is dynamically typed, we'll see that in the [type-dedicated chapter](../c
 
 ## Control structures
 
-### Branching programs
+### straight-line 
 
-straight-line programs : computation that execute one statement after another in the order in which they appear
-branching programs : simplest branching statement is conditional.
+2 programs types:
+- straight-line programs : computation that execute one statement after another, in the order in which they appear;
+- branching programs : simplest branching statement is conditional.
+
+
+### conditional
+
+#### conditional expression, ternary
+
+> expr1 if condition else expr2
+> If the condition evaluates to True, the value of the entire expression is expr1; otherwise it is expr2.
+
+It is semantically equivalent to Js ternary, in a different order
+```python
+mood = ( 'bad' if (name == 'garfield' and today=='monday') else 'good')
+```
+
+```js
+const mood = (name == 'garfield' && today=='monday') ? 'bad' : 'good'
+```
+
+
+#### while
+
+
+
 conditional statement has 3 parts:
 - a test : an expression that evaluates to true or false
 - a block of code executed if test evaluates to true
@@ -327,13 +351,27 @@ x = (1111111111111111111111111111111 + 222222222222333222222222 +
 
 if the true or false block contains another conditional statement, the conditional statements are said to be **nested**
 elif in the above code stands for "else if"
-It is often convenient to use a **compound Boolean expression** in the test of a conditional,example `if x < y and x < z:`
 
+It is often convenient to use a **compound Boolean expression** in the test of a conditional,example `if x < y and x < z:`
 
 <---------------------------------------- TODO Read again this part ----------------------------------------------------->
 
 
-## 2.5 While loops
+#### limitations
+
+> Conditionals allow us to write programs that are more interesting than straight-line programs, but the class of branching programs is still quite limited. One way to think about the power of a class of programs is in terms of how long they can take to run. Assume that each line of code takes one unit of time to execute. If a straight-line program has n lines of code, it will take n units of time to run. What about a branching program with n lines of code ? It might take less than n units of time to run, but it cannot take more, since each line of code is executed at most once.
+
+> A program for which the maximum running time is bounded by the length of the program is said to run in constant time. This does not mean that each time the program is run it executes the same number of steps. It means that there exists a constant, k, such that the program is guaranteed to take no more than k steps to run. This implies that the running time does not grow with the size of the input to the program.
+
+> Constant-time programs are limited in what they can do. Consider writing a program to tally the votes in an election. It would be truly surprising if one could write a program that could do this in a time that was independent of the number of votes cast. In fact, it is impossible to do so. 
+
+> The study of the intrinsic difficulty of problems is the topic of computational complexity. We will return to this topic several times in this book.
+  Fortunately, we need only one more programming language construct, iteration, to allow us to write programs of arbitrary complexity.
+
+### iteration, looping
+
+#### while
+
 most computational tasks cannot be accomplished using branching programs
 we use iteration when we want a program to do the same thing many times, a generic iteration also called a **looping**
 begins with a **test** like a **conditional statement** 
@@ -344,10 +382,9 @@ we can use a **while** statement
 
 **hand-simulating** the code using a pen and a paper or even a text editor
 
-### finger exercice
-[code](code/finger-ex-2-5.py)
+[finger exercice](code/finger-ex-2-5.py)
 
-## 2.6 For loop and range
+#### for, range
 
 iterating over a sequence, 'for variable in sequence'
 ```python
@@ -371,8 +408,8 @@ the arguments of the range function are evaluated just before the first iteratio
 with nested loop, only the outer loop is concerned, the index of the inner loop will be reevaluated
 see `nested_loops` in [code](/code/chap_2_code.py) 
 
-### finger exercice
-[code](code/finger-ex-2-6.py)
+
+[finger exercice](code/finger-ex-2-6.py)
 
 ## 2.7 Style matters
 
