@@ -2,5 +2,5 @@
 .DS_Store
 .editorconfig
 
-*/__pycache__/
+**/__pycache__/**
 
