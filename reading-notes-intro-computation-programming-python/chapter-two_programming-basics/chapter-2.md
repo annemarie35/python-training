@@ -62,6 +62,16 @@ The `bool` type accept these:
 - or
 - not
 
+### operator overloading
+
+An operator is said to be overloaded because : 
+- it has different meanings; 
+- depending upon the types of objects to which it is applied.
+
+An example is the plus (`+`) operator which means:
+- on type number: addition, eg.  `1 + 2 == 3`;
+- on type string: concatenation, eg. ` 'ab' + 'c' == 'abc' `.
+
 ### Expression, evaluation, equality
 
 `Objects` and `operators` can be combined to form `expressions`.
@@ -219,7 +229,10 @@ If you run the program two times:
 
 ### string type
 
-Text (sequence of character) is stored in python in the string type, named `str`. There is no type for a single character. 
+Text (sequence of character) is stored in python in the string type, named `str`. There is no type for a single character. All string are immutable.
+
+> There is no mutable string type
+[Source](https://docs.python.org/3/library/stdtypes.html#str)
 
 ### denotation
 
@@ -253,22 +266,6 @@ The function return text (`str` type), even if the user typed only number.
 def birthday():
     birthday = input('Enter your birthday mm/dd/yyyy please: ')
     print(f'You were born in the year {birthday[6:10]}')
-```
-
-### operators, overloading
-
-> The operator + is said to be overloaded because it has different meanings depending upon the types of objects to which it is applied.
-
-`+` operator :
-- type number: addition
-- type string: concatenation
-
-`*` operator :
-- type int: multiplication / product
-- type string: repetition 
-
-```python
-3 * "a" == 'aaa' # True
 ```
 
 ### operate on text
@@ -323,6 +320,34 @@ If values are omitted around colon, defaults values are :
 ```python
 'abc'[:] == 'abc' # True
 ``` 
+
+This is a quick way to take a copy of the object
+[Source](https://towardsdatascience.com/mastering-indexing-and-slicing-in-python-443e23457125/)
+
+```python
+id('abc') == id('abc[:]') # False
+```
+
+#### concatenating, combining
+
+Use the `+` operator.
+```python
+'hello' + ' ' + 'world' == 'hello world' # True
+```
+
+The concatenation returns a new object. 
+[Source](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)
+> Concatenating immutable sequences always results in a new object. This means that building up a sequence by repeated concatenation will have a quadratic runtime cost in the total sequence length. To get a linear runtime cost, you must switch to one of the alternatives below
+
+#### generating text, repeating
+
+You can generate text without using looping for simple usages. 
+
+Use the repetition `*` operator.
+```python
+3 * 'abc ' == 'abc abc abc ' # True
+```
+
 
 ##### printing
 **f-string** since Python 3.6
