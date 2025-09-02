@@ -36,3 +36,62 @@ When a function is called:
 3. Code in the function's body is executed until a return statement is encountered
 4. value of the return is the value of function invocation
 5. Point of execution is transferred back to the code following the invocation
+
+### 4.1.2 Keyword arguments and default value
+missing parameters if not given -> throw an error
+keyword arguments default values
+
+### 4.1.3 Variable number of arguments
+Many Python's built-in functions operate with a variable number of arguments
+The **unpacking operator *** allows a function to accept a variable number of positional arguments.
+```python
+def mean(*args):
+```
+
+### 4.1.4 Scoping
+
+## 4.2 Specifications
+
+## 4.3 Using functions to modularize code
+
+## 4.4 Function as objects
+
+## 4.5 Methods , oversimplified
+
+## 4.6 Terms introduced in chapter
+
+- function definition
+- formal parameter
+- actual parameter
+- argument
+- function invocation (function call)
+- return statement
+- point of execution
+- lambda abstraction
+- test function
+- debugging
+- positional argument
+- keyword argument
+- default parameter
+- value unpacking operator (*)
+- name space
+- scope
+- local variable
+- symbol table
+- stack frame
+- static (lexical) scoping
+- stack (LIFO)
+- specification
+- client
+- assumption
+- guarantee
+- decomposition
+- abstraction
+- docstring
+- help function
+- first-class object
+- higher-order programming
+- lambda expression
+- method
+- dot notation
+

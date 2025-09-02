@@ -13,4 +13,18 @@ print_sum_of_roots(25, -8, 16, 0.001 )
 def is_in(text1, text2):
     return text1.lower() in text2.lower()
 
+is_in('python', 'python')
+
 # Finger exercise: Write a function to test is_in.
+def test_is_in(words_list, word_to_check):
+    for word in words_list:
+        result = is_in(word, word_to_check)
+        if result is True:
+            print(f'{word} is in {word_to_check}')
+        else:
+            print(f'{word} is NOT in {word_to_check}')
+
+
+words_list=['Python', 'p', 'python', 'a']
+word='python'
+test_is_in(words_list, word)
