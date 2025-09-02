@@ -28,6 +28,17 @@ print('Hello world!')
 
 Objects are chore things manipulated by the program.
 
+This is an object
+```python
+2
+```
+
+Each object has a unique identifier.
+To get it, pass the object in parameter of `id()` function.
+```python
+id(2) # 126275919282448
+```
+
 ### Type
 
 Objects have a type.
@@ -93,6 +104,14 @@ The `==` (double equal) operator is a special operator: it tests if two expressi
 ```python
 (3 + 2) == 5 # True 
 ```
+
+The equality operator does not test if two objects are the same.
+To do so, you should compare their identifiers.
+
+```python
+id('ab') == id('a' + 'b') # True
+```
+
 
 ### Variables, assignments, binding
 
@@ -321,11 +340,13 @@ If values are omitted around colon, defaults values are :
 'abc'[:] == 'abc' # True
 ``` 
 
+// Todo: check what's happening, as it seems no copy is performed
+
 This is a quick way to take a copy of the object
 [Source](https://towardsdatascience.com/mastering-indexing-and-slicing-in-python-443e23457125/)
 
 ```python
-id('abc') == id('abc[:]') # False
+id('abc') == id('abc'[:]) # False
 ```
 
 #### concatenating, combining
@@ -349,7 +370,8 @@ Use the repetition `*` operator.
 ```
 
 
-##### printing
+#### printing
+
 **f-string** since Python 3.6
 f or F following by a special kind od string literal called a **formatted string literal** : expressions bracketed by curly braces (double curly when having a curly inside)
 `print(f'{25+25} is {1/2*100}% of {50*2}')` -> `50 is 50.0% of 100`
