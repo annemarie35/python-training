@@ -36,6 +36,17 @@ epsilons = (0.1, 0.001, 1)
 
 test_find_root(x_vals, powers, epsilons)
 
+def print_name(first_name, last_name, reverse):
+    if reverse:
+        print(last_name + ', ' + first_name)
+    else:
+        print(first_name, last_name)
+
+print_name('Olga', 'Puchmajerova', False)
+print_name('Olga', 'Puchmajerova', reverse = False)
+print_name('Olga', last_name = 'Puchmajerova', reverse =False)
+print_name(last_name = 'Puchmajerova', first_name = 'Olga', reverse = False)
+# This raise a Syntax Error: print_name('Olga', last_name = 'Puchmajerova', False)
 
 def mean(*args):
     # Assumes at least one argument and all arguments are numbers
@@ -61,6 +72,7 @@ print('x =', x)
 print('y =', y)
 
 def nested_scopes(x):
+    # Figure 4-5 in book
     def func_g():
         x = 'abc'
         print('x =', x)
@@ -79,3 +91,16 @@ z = nested_scopes(x)
 print('x =', x)
 print('z =', z)
 z()
+
+# local variable 'x' referenced before assignment
+def f():
+    print('x in f =', x)
+
+def g():
+    print('x in g =', x)
+    x = 1
+
+x = 3
+f()
+x = 67975765
+g()
