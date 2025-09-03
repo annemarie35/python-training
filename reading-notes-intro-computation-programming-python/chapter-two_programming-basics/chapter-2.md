@@ -22,6 +22,74 @@ If the interpreter is launched from the shell and is given the script below, thi
 print('Hello world!')
 ```
 
+// TODO: check that declaring a function is a definition 
+// if so, and add a link to the chapter
+// variable binding does not look like definition at all
+
+
+## Statement, script
+
+### One statement per line
+
+If a `line` of the `script` file contains only one `statement`, it should not end with a special character.
+If you can use the semicolon (`;`), the script will run, but Python programmers will be very surprised.
+```python
+print('Hello ')
+print('world!');
+```
+
+### Several statements per line
+If a `line` of the `script` file contains more than one `statement`, each statement should end with a semicolon, which act as a statement separator.
+```python
+print('Hello '); print('world!');
+```
+
+### One statement, several lines
+
+Long lines can be broken in multiple lines, which means a statement can span several lines. 
+
+To do so, end the line with backslash (`\`).
+```python
+x = 1 + \
+3
+print('he\
+lo')
+```
+
+Do not put anything, even a space, after the backslash, or you'll get an error.
+```python
+x = 1 + \ 
+3
+```
+
+You can sometimes use `implied line continuation`, a feature that know elements come in pair :
+- if an opening element, say `(`, has not its closing pair `)` on the line; 
+- it will read all lines till it finds it, say `)`; . 
+
+Parentheses (`()`) are for expressions.
+```python
+x = (1 +     
+2)
+```
+
+Brackets (`[]`) are for string. 
+```python
+text[1:
+:3]
+```
+
+Braces/curly brackets (`{}`) are for dictionaries, as in Javascript.
+```python
+fruits = {
+    "apple" : "red",
+    "banana" : "yellow",
+}
+```
+
+This may be surprising for you, as other languages like Java behave differently. 
+[Source : Wikipedia](https://en.wikipedia.org/wiki/Semicolon#Programming)
+
+
 ## Objects, type, expression, variable
 
 ### Objects
@@ -83,7 +151,7 @@ An example is the plus (`+`) operator which means:
 - on type number: addition, eg.  `1 + 2 == 3`;
 - on type string: concatenation, eg. ` 'ab' + 'c' == 'abc' `.
 
-### Expression, evaluation, equality
+### Expression, evaluation
 
 `Objects` and `operators` can be combined to form `expressions`.
 
@@ -99,7 +167,9 @@ In the expression above:
 - `3 + 2` is an `expression`;
 - the `value` of this `expression` is object `5`.
 
-The `==` (double equal) operator is a special operator: it tests if two expressions evaluate to the same value. It returns a boolean value.
+### equality
+
+The `==` (double equal) operator is a special operator: it tests if two expressions (or objects) evaluate `to the same value`. It returns a boolean value.
 
 ```python
 (3 + 2) == 5 # True 
@@ -112,6 +182,41 @@ To do so, you should compare their identifiers.
 id('ab') == id('a' + 'b') # True
 ```
 
+### statement, expression
+
+You may think that :
+- all statement are expressions; 
+- all expressions are statements.
+
+> A command, often called a statement, instructs the interpreter to do something.
+> Objects and operators can be combined to form expressions.
+
+This is not so, as an expression should return an object.
+> The evaluation of an expression produce an object, called the value of an expression.
+
+So all statement that does not return values are not expression, as the statement below.
+```python
+print('Hello world!')
+```
+
+A statement can be an expression, but it is not very useful, as its value is lost.
+```python
+3 + 2
+```
+
+Statements usually use expressions.
+
+They store their result in variables.
+```python
+result = 3 + 2
+```
+
+They use them to make tests.
+```python
+if (a + b == 3) :
+    print('Hello')
+```
+
 
 ### Variables, assignments, binding
 
@@ -120,7 +225,6 @@ id('ab') == id('a' + 'b') # True
 The `=` (equal) operator : 
 - associate a `name` to an `object`;
 - bind an `object` to a `name`;
-// TODO: check if [the definition](#script-interpreter) is actually a binding
 - define a `variable`, it is called a `definition`.
 
 Here :
@@ -394,40 +498,86 @@ You can tell Python which encoding to use to read teh file by inserting a specia
 # -*- coding: utf-8 -*-
 ```
 
-## Control structures
+## Control flow
+
+> control flow (or flow of control) is the order in which individual statements (...) of a program are executed
+[Source : WP](https://en.wikipedia.org/wiki/Control_flow)
 
 ### straight-line 
 
-2 programs types:
-- straight-line programs : computation that execute one statement after another, in the order in which they appear;
-- branching programs : simplest branching statement is conditional.
+> Straight-line programs : they execute one statement after another, in the order in which they appear. The kind of computation we can describe are noty very interesting.
 
+### branching program
 
-### conditional
+Note : The definition of branching program in the book seems limited to conditionals, as the author introduce the while loop implying it does not belong to branching program.
+> Most computational tasks cannot be accomplished using branching programs (...). When we want a program to do the same thing many times, we can use iteration.   
 
-#### conditional expression, ternary
+But Wikipedia suggest branching include conditional and looping; we'll follow this way for headers.
+> A branch is an instruction in a computer program that can cause a computer to begin executing a different instruction sequence and thus deviate from its default behavior of executing instructions in order.
+
+> Branch instructions are used to implement control flow in program loops and conditionals (i.e., executing a particular sequence of instructions only if certain conditions are satisfied).  
+
+[Source: WP](https://en.wikipedia.org/wiki/Branch_(computer_science)#cite_note-1)
+
+#### conditional
+
+Conditional are not straight-line program because an instruction (or a group of) may not be executed.
+There will be two path of execution if the script is executed two times, or with different input.
+It is the classic if/then/else.
+
+##### conditional expression, if
+
+The most simple need for conditionals is to assign a value or another to a variable.
+```
+if condition 
+then variable = 'nominal'
+else variable = 'alternative'
+```
+
+The reader has to check if the variable is the same if both branches.
+That's what conditional expression are for : they enforce one single variable is assigned.  
+```python
+variable = if condition then 'nominal' else 'alternative'   
+```
+
+Conditional expressions are named expressions because [they are expressions](#expression-evaluation)  
+> Many languages support conditional expressions, which are similar to if statements, but return a value as a result. Thus, they are true expressions (which evaluate to a value), not statements (which may not be permitted in the context of a value). 
+
+[Source: WP](https://en.wikipedia.org/wiki/Conditional_(computer_programming)#If%E2%80%93then(%E2%80%93else))
 
 > expr1 if condition else expr2
 > If the condition evaluates to True, the value of the entire expression is expr1; otherwise it is expr2.
 
-It is semantically equivalent to Js ternary, in a different order
+Let's see an example.
 ```python
 mood = ( 'bad' if (name == 'garfield' and today=='monday') else 'good')
 ```
 
+It is semantically equivalent to Javascript, in a different order.
 ```js
 const mood = (name == 'garfield' && today=='monday') ? 'bad' : 'good'
 ```
 
+We can see : 
+- in Js, both alternatives are located together `'bad' : 'good'` ;
+- in Python, one alternatives `bad` comes at the very beginning of the statement, and the other, `good` is at the very end. 
 
-#### while
+Python highlight one of the alternative, so choose the one which is most important.  
+
+In other languages, conditional expression is implemented as an operator `? :`, eg. ` condition ? 'nominal' : 'alternative`, which is called ternary. In Python, you can't write conditional expression using an operator.
+> In computer science, an operator is a ternary operator if it takes three arguments (or operands)
+> Many programming languages feature the ternary conditional operator which defines a conditional expression that yields a value. This is sometimes referred to simply as the ternary operator, despite that several unrelated ternary operators exist. 
+[Source: WP](https://en.wikipedia.org/wiki/Ternary_operation#Computer_Science)
 
 
+##### conditional statement, if
 
-conditional statement has 3 parts:
-- a test : an expression that evaluates to true or false
-- a block of code executed if test evaluates to true
-- an optional block of code executed if test evaluates to false
+A conditional statement execute (or not) a block of code. 
+
+A conditional statement has 3 parts :
+- a test : a boolean `expression` - that evaluates to true or false, starting with `if` keyword and ending by a colon (`:`)
+- a block of code, executed if the test evaluates to true - there is not `then` keywork
+- a block of code, optional, executed if the test evaluates to false, starting with `else` keyword
 
 ```python
 if x%2 == 0:
@@ -437,24 +587,26 @@ else:
 print('Done with conditional')
 ```
 
-== is used for comparison, since = is reserved for assignment
-- Indentation is semantically meaningful in Python, and it is unusual used this way. It ensures that visual structure of a program is an accurate representation of its semantic structure
-- long lines can be broken in multiple lines (if not it will be interpreted as two line and produces an 'unexpected indent error') with backslash (\) or ()
+##### test
 
+The test can be any boolean expression.
 ```python
-x = (1111111111111111111111111111111 + 222222222222333222222222 +    
-3333333333333333333333333333333)
+if sunHasSetInAndLightIsOn
+if sunHasSetIn and LightIsOn
+if x < y and x < z #compound Boolean expression
 ```
 
-if the true or false block contains another conditional statement, the conditional statements are said to be **nested**
-elif in the above code stands for "else if"
+##### code blocks
 
-It is often convenient to use a **compound Boolean expression** in the test of a conditional,example `if x < y and x < z:`
+Blocks of code should be indented from the `if` to be valid.
 
-<---------------------------------------- TODO Read again this part ----------------------------------------------------->
+Indentation is semantically meaningful in Python, which is unusual. 
+It ensures that visual structure of a program is an accurate representation of its semantic structure
 
+The code blocks can contain anything, including another conditional statement.
+If so, it is said that conditional statements are `nested`.
 
-#### limitations
+##### limitations
 
 > Conditionals allow us to write programs that are more interesting than straight-line programs, but the class of branching programs is still quite limited. One way to think about the power of a class of programs is in terms of how long they can take to run. Assume that each line of code takes one unit of time to execute. If a straight-line program has n lines of code, it will take n units of time to run. What about a branching program with n lines of code ? It might take less than n units of time to run, but it cannot take more, since each line of code is executed at most once.
 
@@ -465,9 +617,9 @@ It is often convenient to use a **compound Boolean expression** in the test of a
 > The study of the intrinsic difficulty of problems is the topic of computational complexity. We will return to this topic several times in this book.
   Fortunately, we need only one more programming language construct, iteration, to allow us to write programs of arbitrary complexity.
 
-### iteration, looping
+#### iteration, looping
 
-#### while
+##### while
 
 most computational tasks cannot be accomplished using branching programs
 we use iteration when we want a program to do the same thing many times, a generic iteration also called a **looping**
@@ -481,7 +633,7 @@ we can use a **while** statement
 
 [finger exercice](code/finger-ex-2-5.py)
 
-#### for, range
+##### for, range
 
 iterating over a sequence, 'for variable in sequence'
 ```python
