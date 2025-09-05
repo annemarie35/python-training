@@ -30,6 +30,10 @@ actual parameter = 'toto'
 function(actual_parameter) # function invocation
 ```
 
+The function body is any piece of Python code.
+
+> This notion of function is far more general than what mathematicians call a function.
+> It was first popularized by the programming language Fortran 2 in the late 1950s.
 
 **Lambda abstraction**
 > The name “lambda abstraction” is derived from mathematics developed by Alonzo Church in the 1930s and 1940s. The name is derived from Church's use of the Greek letter lambda (λ) to denote function abstraction. During his lifetime, Church gave different explanations of why he chose the symbol lambda. My favorite is, “eeny, meeny, miny, moe".
@@ -42,11 +46,12 @@ function(actual_parameter) # function invocation
 4. Value of the return is the **value** of function **invocation**
 5. **Point of execution** is transferred back to the code following the **invocation**
 
+[finger exercise](/code/finger_ex_4_1.py)
 
 ## Keyword arguments and default value
 
 There are two ways that formal parameters get bound :
-- `positional` : eg. first formal parameter bound to first actual parameters, etc.
+- `positional` : e.g. first formal parameter bound to first actual parameters, etc.
 - `keyword arguments` : formal paramaters are bound using the name of the formal parameter
 
 ```python
@@ -78,6 +83,8 @@ Keyword arguments are commonly used in conjunction with `default parameter value
 It can help call a function with fewer arguments than specified. For example, `print_name('Olga', 'Puchmajerova')`
 
 > using keyword arguments reduces the risk of unintentionally binding an actual parameter to the wrong formal parameter, which is a common blunder. It helps to reduce ambiguity in programmer's intentions.
+
+[finger exercise](/code/finger_ex_4_1.py)
 
 ## Variable number of arguments
 Many Python's built-in functions (like `min` for example) operate with a variable number of arguments.
@@ -168,7 +175,7 @@ When `nested_scopes` returns, the stack frame containing the names associated wi
 ### Order of references to a name
 
 The order in which references to a name occur is not germane.
-If an object is bound to a name anywhere in the function body (even if it occurs in an expression before it appears as the left-hand side of an
+If an object is bound to a name anywhere in the `function body (even if it occurs in an expression before it appears as the left-hand side of an
 assignment), it is treated as local to that function.
 
 ```python
@@ -215,6 +222,8 @@ If you enter help(), an interactive help session is started, and the interpreter
 Type for example, `if` to display a description of the `if statement` 
 Interactive help can be exited by entering quit.
 
+[finger exercise](/code/finger_ex_4_2.py)
+
 ## Using functions to modularize code
 
 Split a function monolithic `implementation` into multiple functions, each of which does a simple thing and has its own specifications.
@@ -222,11 +231,47 @@ Keep in mind that it should be easier to understand.
 
 > A good rule of thumb is that if a function fits comfortably on a single page, it probably doesn't need to be subdivided to be easily understood.
 
-## 4.4 Function as objects
+## Function as objects
 
-## 4.5 Methods , oversimplified
+Functions are `first-class objects`. 
+That means they can be treated like objects of any other type, e.g., `int` or `list`.
 
-## 4.6 Terms introduced in chapter
+- they have types, e.g., the expression `type(abs)` has the value `<type 'built- in_function_or_method'>`;
+- they can appear in expressions, e.g., as the right-hand side of an assignment statement or as an argument to a function
+- they can be returned by functions; 
+- etc.
+
+- Using functions as `arguments` allows a style of coding called `higher-order programming`.
+
+### Lambdas
+Python supports the creation of `anonymous functions` (i.e., functions that are not bound to a name), using the reserved word `lambda`.
+The general form of a `lambda expression` is : `lambda sequence of variable names : expression`
+
+> The name “lambda abstraction” is derived from mathematics developed by Alonzo Church in the 1930s and 1940s.
+> The name is derived from Church's use of the Greek letter lambda (λ) to denote function abstraction.
+> During his lifetime, Church gave different explanations of why he chose the symbol lambda.
+> My favorite is, “eeny, meeny, miny, moe.”
+
+[finger exercise](/code/finger_ex_4_4.py)
+
+## Methods, oversimplified
+
+Methods are function-like objects:
+- can be called with parameters,
+- can return values,
+- can have side effects.
+
+We use `dot notation` to place that argument before the function name.
+Many useful operations on built-in types are methods.
+
+```python
+s = 'abcdef'
+s.find('bc') # will return index of when the search string appears if string 'bc' occurs in s otherwise else it will return -1
+```
+
+[finger exercise](/code/finger_ex_4_5.py)
+
+## Terms introduced in chapter
 
 - function definition
 - formal parameter

@@ -145,3 +145,55 @@ def find_root_refactored(x_vals, power, epsilon):
 
     low, right = find_root_bounds(x_vals, power)
     return bisection_solve(x_vals, power, epsilon, low, right)
+
+
+def find_root_bounds(x_val, power):
+    """x a float, power a positive int return low, high such that low**power <= x and high**power >= x.
+    """
+    # TODO corriger, il manque power dans le code du bouquin
+    low = min(-1, x_val)
+    high = max(1, x_val)
+    return low, high
+
+def bisection_solve_with_function(x_val, eval_ans, epsilon, low, high):
+    """
+    x, epsilon, low, high are floats, epsilon > 0
+    low <= high and there is an answer between low and high such that ans**power is within epsilon of x.
+    returns answer such that ans**power is within epsilon of x.
+    """
+    ans = (high+low)/2
+    while abs(eval_ans(ans) - x_val) >= epsilon:
+        if eval_ans(ans) < x_val:
+            low = ans
+        else:
+            high = ans
+        ans = (high+low)/2
+    return ans
+
+
+def square(ans):
+    return ans ** 2
+
+low, high = find_root_bounds(99, 2)
+print(bisection_solve_with_function(99, square, 0.01, low, high))
+print(bisection_solve_with_function(99, lambda ans: ans ** 2, 0.01, low, high))
+
+# Chap 4.4
+def create_eval_ans():
+    power = input('Enter a positive integer: ')
+    return lambda ans: ans ** int(power)
+
+def log(x, base, epsilon):
+    """Assumes x and epsilon int or float, base an int, x > 1, epsilon > 0 & power >=1
+    Returns float y such that base**y is within epsilon of x.
+    """
+    def bind_logs_bounds(x, base):
+        upper_bound = 0
+        while base**upper_bound < x:
+            upper_bound += 1
+        return upper_bound - 1, upper_bound
+
+    low, high = bind_logs_bounds(x, base)
+    return bisection_solve_with_function(x, lambda ans: base**ans, epsilon, low, high)
+
+log(16, 2, 0.01)
