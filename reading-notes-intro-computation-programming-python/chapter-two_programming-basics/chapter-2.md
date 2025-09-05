@@ -141,9 +141,9 @@ The `bool` type accept these:
 - or
 - not
 
-### operator overloading
+### Operator overloading
 
-An operator is said to be overloaded because : 
+An operator is said to be overloaded because: 
 - it has different meanings; 
 - depending upon the types of objects to which it is applied.
 
@@ -167,7 +167,7 @@ In the expression above:
 - `3 + 2` is an `expression`;
 - the `value` of this `expression` is object `5`.
 
-### equality
+### Equality
 
 The `==` (double equal) operator is a special operator: it tests if two expressions (or objects) evaluate `to the same value`. It returns a boolean value.
 
@@ -182,19 +182,19 @@ To do so, you should compare their identifiers.
 id('ab') == id('a' + 'b') # True
 ```
 
-### statement, expression
+### Statement, expression
 
 You may think that :
-- all statement are expressions; 
+- all statements are expressions; 
 - all expressions are statements.
 
 > A command, often called a statement, instructs the interpreter to do something.
 > Objects and operators can be combined to form expressions.
 
 This is not so, as an expression should return an object.
-> The evaluation of an expression produce an object, called the value of an expression.
+> The evaluation of an expression produces an object, called the value of an expression.
 
-So all statement that does not return values are not expression, as the statement below.
+So all statements that does not return values are not expression, as the statement below.
 ```python
 print('Hello world!')
 ```
@@ -274,7 +274,7 @@ The conversion can be implicit, it is named `coercion`.
 2 * 1.0 == 2.0 # True
 type(2 * 1.0) == float # True
 ```
-When an operator combine two objects, it evaluates to the type which has a greater scale (here, float).
+When an operator combines two objects, it evaluates to the type which has a greater scale (here, float).
 
 The conversion can be explicit, using a function named from the type, it is named `casting`.
 ```python
@@ -320,7 +320,7 @@ This operator expect an `int` as argument, so the expression below throws an err
 
 Python is dynamically typed, we'll see that in the [type-dedicated chapter](../chapter-for_typing).
 
-### literal and denotation
+### Literal and denotation
 
 > Many objects can be denoted by literals in the text of a program.
 > For example, the text 2 is a literal representing a number and the text abc is a literal representing a string.
@@ -346,18 +346,18 @@ This is tricky:
 
 If you run the program two times:
 - the literal will stay the same;
-- the object will not be te same.
+- the object will not be the same.
 
 ## Text manipulation
 
-### string type
+### String type
 
 Text (sequence of character) is stored in python in the string type, named `str`. There is no type for a single character. All string are immutable.
 
 > There is no mutable string type
 [Source](https://docs.python.org/3/library/stdtypes.html#str)
 
-### denotation
+### Denotation
 
 To `denote` text, quotes (simple or double) are used.
 ```python
@@ -374,7 +374,7 @@ Do not get confused with Javascript :
 '123' === 123  # false
 ```
 
-### input
+### Input
 
 If you don't know the value of the text, you can't denote it. That happens if you want the user to supply the text, so yo can use `input` function.
 
@@ -391,9 +391,9 @@ def birthday():
     print(f'You were born in the year {birthday[6:10]}')
 ```
 
-### operate on text
+### Operate on text
 
-##### length
+##### Length
 
 The `len` function returns the length (character count) of a string. 
 
@@ -401,7 +401,7 @@ The `len` function returns the length (character count) of a string.
 len('abc') == 3 # True
 ```
 
-##### extracting
+##### Extracting
 
 As the string is [non-scalar](#type) type, you can access its individual parts.
 
@@ -444,7 +444,7 @@ If values are omitted around colon, defaults values are :
 'abc'[:] == 'abc' # True
 ``` 
 
-// Todo: check what's happening, as it seems no copy is performed
+// TODO: check what's happening, as it seems no copy is performed
 
 This is a quick way to take a copy of the object
 [Source](https://towardsdatascience.com/mastering-indexing-and-slicing-in-python-443e23457125/)
@@ -453,7 +453,7 @@ This is a quick way to take a copy of the object
 id('abc') == id('abc'[:]) # False
 ```
 
-#### concatenating, combining
+#### Concatenating, combining
 
 Use the `+` operator.
 ```python
@@ -464,7 +464,7 @@ The concatenation returns a new object.
 [Source](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)
 > Concatenating immutable sequences always results in a new object. This means that building up a sequence by repeated concatenation will have a quadratic runtime cost in the total sequence length. To get a linear runtime cost, you must switch to one of the alternatives below
 
-#### generating text, repeating
+#### Generating text, repeating
 
 You can generate text without using looping for simple usages. 
 
@@ -474,16 +474,16 @@ Use the repetition `*` operator.
 ```
 
 
-#### printing
+#### Printing
 
 **f-string** since Python 3.6
-f or F following by a special kind od string literal called a **formatted string literal** : expressions bracketed by curly braces (double curly when having a curly inside)
+f or F following by a special kind od string literal called a `formatted string literal` : expressions bracketed by curly braces (double curly when having a curly inside)
 `print(f'{25+25} is {1/2*100}% of {50*2}')` -> `50 is 50.0% of 100`
 
 We can use modifiers in the expression inside a f-string adding a colon after `print(f'{3.14159:.2}')` -> 3.1 / `print(f'{15000000:,.0f}')` -> 15,000,000
 
 
-### character encoding
+### Character encoding
 
 ASCII is the historical standard for internal representation of characters, which allow 128 characters. This was enough for representing the usual set of english language.
 
@@ -503,11 +503,11 @@ You can tell Python which encoding to use to read teh file by inserting a specia
 > control flow (or flow of control) is the order in which individual statements (...) of a program are executed
 [Source : WP](https://en.wikipedia.org/wiki/Control_flow)
 
-### straight-line 
+### Straight-line 
 
 > Straight-line programs : they execute one statement after another, in the order in which they appear. The kind of computation we can describe are noty very interesting.
 
-### branching program
+### Branching program
 
 Note : The definition of branching program in the book seems limited to conditionals, as the author introduce the while loop implying it does not belong to branching program.
 > Most computational tasks cannot be accomplished using branching programs (...). When we want a program to do the same thing many times, we can use iteration.   
@@ -519,13 +519,13 @@ But Wikipedia suggest branching include conditional and looping; we'll follow th
 
 [Source: WP](https://en.wikipedia.org/wiki/Branch_(computer_science)#cite_note-1)
 
-#### conditional
+#### Conditional
 
 Conditional are not straight-line program because an instruction (or a group of) may not be executed.
 There will be two path of execution if the script is executed two times, or with different input.
 It is the classic if/then/else.
 
-##### conditional expression, if
+##### Conditional expression, if
 
 The most simple need for conditionals is to assign a value or another to a variable.
 ```
@@ -570,7 +570,7 @@ In other languages, conditional expression is implemented as an operator `? :`, 
 [Source: WP](https://en.wikipedia.org/wiki/Ternary_operation#Computer_Science)
 
 
-##### conditional statement, if
+##### Conditional statement, if
 
 A conditional statement execute (or not) a block of code. 
 
@@ -587,7 +587,7 @@ else:
 print('Done with conditional')
 ```
 
-##### test
+##### Test
 
 The test can be any boolean expression.
 ```python
@@ -596,17 +596,17 @@ if sunHasSetIn and LightIsOn
 if x < y and x < z #compound Boolean expression
 ```
 
-##### code blocks
+##### Code blocks
 
 Blocks of code should be indented from the `if` to be valid.
 
 Indentation is semantically meaningful in Python, which is unusual. 
-It ensures that visual structure of a program is an accurate representation of its semantic structure
+It ensures that the visual structure of a program is an accurate representation of its semantic structure.
 
 The code blocks can contain anything, including another conditional statement.
 If so, it is said that conditional statements are `nested`.
 
-##### limitations
+##### Limitations
 
 > Conditionals allow us to write programs that are more interesting than straight-line programs, but the class of branching programs is still quite limited. One way to think about the power of a class of programs is in terms of how long they can take to run. Assume that each line of code takes one unit of time to execute. If a straight-line program has n lines of code, it will take n units of time to run. What about a branching program with n lines of code ? It might take less than n units of time to run, but it cannot take more, since each line of code is executed at most once.
 
@@ -617,9 +617,9 @@ If so, it is said that conditional statements are `nested`.
 > The study of the intrinsic difficulty of problems is the topic of computational complexity. We will return to this topic several times in this book.
   Fortunately, we need only one more programming language construct, iteration, to allow us to write programs of arbitrary complexity.
 
-#### iteration, looping
+#### Iteration, looping
 
-##### while
+##### While
 
 most computational tasks cannot be accomplished using branching programs
 we use iteration when we want a program to do the same thing many times, a generic iteration also called a **looping**
@@ -633,7 +633,7 @@ we can use a **while** statement
 
 [finger exercice](code/finger-ex-2-5.py)
 
-##### for, range
+##### For, range
 
 iterating over a sequence, 'for variable in sequence'
 ```python
