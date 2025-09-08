@@ -314,3 +314,5 @@ Not all types of objects can be elements of sets. All objects in a set must be `
 
 - All objects of Python's scalar immutable types are hashable, and no object of Python's built-in mutable types is hashable. 
 - An object of a non-scalar immutable type (e.g., a tuple) is hashable if all of its elements are hashable.
+
+## Dictionnaries
