@@ -234,3 +234,39 @@ L2 = [2, 57, 9]
 for i in map(min, L1, L2):
     print(i)
 ```
+
+## Strings, Tuples, Ranges, and Lists
+
+| Type  | Type of elements |      Examples of literals | Mutable |
+|:------|:----------------:|--------------------------:|--------:|
+| str   |    characters    |            '', 'a', 'abc' |      No |
+| tuple |     any type     |      (), (3,), ('abc', 4) |      No |
+| range |     integers     | range(10), range(1, 10,2) |      No |
+| list  |     any type     |       [], [3], ['abc', 4] |     Yes |
+Comparison of sequence types
+
+![img.png](figure_5-7.png)
+
+Python programmers tend to use lists far more often than tuples, since lists are mutable, they can be constructed incrementally during computation.
+```python
+L = range(0, 10)
+even_elems = []
+for e in L:
+    if e%2 == 0:
+        even_elems.append(e)
+```
+
+Strinss can contain only characters, they are less versatile than tuples or lists, but they have many useful built-in methods.
+Since strings are *immutable*, these all return values and have no *side effects*.
+
+![img.png](figure_5-8.png)
+
+One of the more useful is `split`, the second argument specifies the separator that is used to split the first argument into a `sequence of `substrings`. 
+It can be optionnal and if omitted, the first string is split using arbitrary strings of whitespace characters (space, tab, newline, return, and formfeed)
+Since Python strings support Unicode, the complete list of whitespace characters is much longer (see https://en.wikipedia.org/wiki/Whitespace_character).
+
+```python
+print('My favorite professor–John G.–rocks'.split(' '))
+print('My favorite professor–John G.–rocks'.split('-'))
+print('My favorite professor–John G.–rocks'.split())
+```
