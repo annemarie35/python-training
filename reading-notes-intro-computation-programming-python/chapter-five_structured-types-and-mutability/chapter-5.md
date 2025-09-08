@@ -140,7 +140,6 @@ Note that all of these except `count` and `index mutate the list.
 
 ![img.png](figure_5-4.png)
 
-
 ## Cloning
 
 It is usually prudent to avoid mutating a list over which one is iterating.
@@ -199,3 +198,21 @@ print(L3)
 print(L2) # Prints [[2, 3], [2, 3]]
 ```
 
+
+
+## List comprehension
+
+`List comprehension provides a concise way to apply an operation to the sequence values provided by iterating over an iterable value:
+- it creates a new list
+- is an expression of the form `[expr for elem in iterable if test]`
+- it provides a convenient way to initialize lists
+  - `[[] for _ in range(10)]` generates a list containing 10 distinct (i.e., non-aliased) empty lists. The variable name `_` indicates that the values of that variable are not used in generating the elements of list, i.e., it is merely a `placeholder`.
+
+### Nested lists
+Python allows multiple `for` statements within a list comprehension
+```python
+print([[(x,y) for x in range(6) if x%2 == 0]
+       for y in range(6) if y%3 == 0])
+```
+
+> Some Python programmers use list comprehensions in marvelous and subtle ways. That is not always a great idea. Remember that somebody else may need to read your code, and “subtle” is rarely a desirable property for a program.
