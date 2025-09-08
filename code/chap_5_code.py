@@ -126,3 +126,21 @@ print('LC2 =', LC2)
 print('LC3 =', LC3)
 print('LC4 =', LC4)
 print('LC5 =', LC5)
+
+# Higher-Order Operations on Lists
+
+def apply_to_each(List, Function):
+    """Assumes that List is a list, Function a function
+    Mutates List by replacing each element of List, e, by Function(e)
+    """
+    for index in range(len(List)):
+        List[index] = Function(List[index])
+
+L = [1, -1, 3.33]
+print('L = ', L)
+apply_to_each(L, int)
+print('L = ', L)
+apply_to_each(L, abs)
+print('L = ', L)
+apply_to_each(L, lambda x: x**2)
+print('L = ', L)

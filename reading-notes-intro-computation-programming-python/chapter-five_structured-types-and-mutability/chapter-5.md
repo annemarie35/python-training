@@ -216,3 +216,21 @@ print([[(x,y) for x in range(6) if x%2 == 0]
 ```
 
 > Some Python programmers use list comprehensions in marvelous and subtle ways. That is not always a great idea. Remember that somebody else may need to read your code, and “subtle” is rarely a desirable property for a program.
+
+## Higher-Order Operations on Lists
+
+In chapter 4, we see that a function is called `higher-order` because it has an argument that is itself a function.
+
+### Map
+
+Python's built-in function similar to `apply_to_each` in [chapter_5_code](/code/chap_5_code.py), often used with a `for`loop.
+Takes a `unary` function (i.e., a function that has only one parameter) as first argument in its simpliest and the second any ordered collection of values suitables as argument to the function.
+`list(map(str, range(10)))` is equivalent to `[str(e) for e in range(10)]`
+
+First argument can be a function with `n` arguments, in which case it must be followed by n subsequent ordered collections:
+```python
+L1 = [1, 28, 36]
+L2 = [2, 57, 9]
+for i in map(min, L1, L2):
+    print(i)
+```
