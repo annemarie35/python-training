@@ -28,3 +28,37 @@ def find_extreme_divisors(n1, n2):
 min_divisor, max_divisor = find_extreme_divisors(100, 200)
 print(min_divisor)
 print(max_divisor)
+
+# Lists and mutability
+L1 = [1, 2, 3]
+L2 = L1[-1::-1] # Prints [3, 2, 1]
+for index in range(len(L1)):
+    print(L1[index]*L2[index])
+
+Techs = ['MIT', 'Caltech'] #immutable
+Ivys = ['Harvard', 'Yale', 'Brown'] #immutable
+Univs = [Techs, Ivys]
+Univs1 = [['MIT', 'Caltech'], ['Harvard', 'Yale', 'Brown']]
+print('Univs =', Univs)
+print('Univs1 =', Univs1)
+print(Univs == Univs1) # Evaluates True but Univs and Univs1 are bound to quite different values.
+
+Techs.append('RPI')
+print('Univs =', Univs)
+print('Univs1 =', Univs1)
+
+L1 = [[]]*2 # creates a list with two elements, each of which is the same object
+L2 = [[], []] # creates a list with two different objects
+for index in range(len(L1)):
+    L1[index].append(index)
+    L2[index].append(index)
+print('L1 =', L1, 'but', 'L2 =', L2)
+
+L1 = [1,2,3]
+L2 = [4,5,6]
+L3 = L1 + L2
+print('L3 =', L3)
+L1.extend(L2)
+print('L1 =', L1)
+L1.append(L2)
+print('L1 =', L1)
