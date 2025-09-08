@@ -270,3 +270,47 @@ print('My favorite professor–John G.–rocks'.split(' '))
 print('My favorite professor–John G.–rocks'.split('-'))
 print('My favorite professor–John G.–rocks'.split())
 ```
+
+## Sets
+
+`Sets` are similar to the notion of a set in mathematics in that they are `unordered` collections of `unique` elements.
+They are denoted using what programmers call curly braces and mathematicians call set braces, e.g.,
+Example: `baseball_teams = {'Dodgers', 'Giants', 'Padres', 'Rockies'}`
+
+- Unordered so attempting to index into a set, e.g., evaluating `baseball_teams[0]`, generates a runtime error
+- We can use a `for` statement to iterate over the elements of a set (the order in which the elements are produced is undefined)
+- Sets are mutable
+  - We add a single element to a set using the `add` method
+  - We add multiple elements to a set by passing a collection of elements (e.g., a list) to the `update` method
+  - Elements can be removed from a set using the `remove` method, which raises an error if the element is not in the set or the `discard` method, which does not raise an error if the element is not in the set
+
+```python
+baseball_teams = {'Rockies'}
+football_teams = {}
+baseball_teams.add('Yankees')
+football_teams.update(['Patriots', 'Jets'])
+football_teams.remove('Patriots')
+```
+
+Membership in a set can be tested using the in operator. 
+For example, `'Rockies' in baseball_teams` returns True. 
+The binary methods `union`, `intersection`, `difference`, and `issubset` have their usual mathematical meanings.
+There are convenient infix operators for many of the methods, including `|` for `union`, `&` for `intersect`, `-` for `difference`, `<=` for `subset`, and `>= `for `superset`.
+
+```python
+baseball_teams = {'Dodgers', 'Giants', 'Padres', 'Rockies'}
+football_teams = {'Giants', 'Eagles', 'Cardinals', 'Cowboys'}
+print(baseball_teams.union({1, 2}))
+print(baseball_teams | {1, 2}) # infix operator for union
+print(baseball_teams.intersection(football_teams))
+print(baseball_teams.difference(football_teams))
+print({'Padres', 'Yankees'}.issubset(baseball_teams))
+```
+
+### Hashable
+Not all types of objects can be elements of sets. All objects in a set must be `hashable` :
+- A `__hash__` method that maps the object of the type to an `int`, and the value returned by `__hash_`_ does not change during the lifetime of the object, and
+- An `__eq__` method that is used to compare it for equality to other objects.
+
+- All objects of Python's scalar immutable types are hashable, and no object of Python's built-in mutable types is hashable. 
+- An object of a non-scalar immutable type (e.g., a tuple) is hashable if all of its elements are hashable.
