@@ -111,3 +111,18 @@ L3 = copy.deepcopy(L2)
 L3[0].append(3)
 print(L3)
 print(L2)
+
+# List comprehension
+
+LC1 = [e**2 for e in range(6)]
+LC2 = [e**2 for e in range(8) if e%2 == 0]
+LC3 = [x**2 for x in [2, 'a', 3, 4.0] if type(x) == int]
+LC4 = [[] for _ in range(10)]
+LC5 = [(x, y)
+       for x in range(6) if x%2 == 0
+       for y in range(6) if y%3 == 0]
+print('LC1 =', LC1)
+print('LC2 =', LC2)
+print('LC3 =', LC3)
+print('LC4 =', LC4)
+print('LC5 =', LC5)
