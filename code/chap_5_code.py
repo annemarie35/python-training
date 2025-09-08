@@ -62,3 +62,52 @@ L1.extend(L2)
 print('L1 =', L1)
 L1.append(L2)
 print('L1 =', L1)
+
+# Cloning
+
+def remove_dups(L1, L2):
+    """Assumes that L1 and L2 are lists.
+    Removes any element from L1 that also occurs in L2"""
+    for e1 in L1:
+        print('L1', L1)
+        print('e1 =', e1)
+        if e1 in L2:
+            L1.remove(e1)
+
+
+L1 = [1, 2, 3, 4]
+L2 = [1, 2, 5, 6]
+remove_dups(L1, L2)
+print('L1 =', L1)
+
+
+import copy
+L = [2]
+L1 = [L]
+L2 = L1[:]
+# L2 = copy.deepcopy(L1)
+L.append(3)
+print(f'L1 = {L1}, L2 = {L2}')
+
+import copy
+L1 = [2]
+L2 = [[L1]]
+L3 = copy.deepcopy(L2)
+L1.append(3)
+print('L1 =', L1) # Prints [2, 3]
+print('L3 =', L3) # Prints [[[2]]]
+print('L2 =', L2) # Prints [[[2, 3]]]
+
+# An attempt to make copies all the way to the bottom would never terminate
+L1 = [2]
+L1.append(L1)
+print('L1 =', L1)
+
+
+import copy
+L1 = [2]
+L2 = [L1, L1] #
+L3 = copy.deepcopy(L2)
+L3[0].append(3)
+print(L3)
+print(L2)
