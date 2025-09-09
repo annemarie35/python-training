@@ -349,3 +349,29 @@ A `book cipher` is a cipher for which the key is derived from a book.
 If a character occurs in the plain text but not in the book, something bad happens. 
 The code_keys dictionary will map each such character to `-1`, and decode_keys will map -1 to whatever the last character in the book happens to be.
 
+
+## Terms Introduced in Chapter
+
+- tuple
+- multiple assignment iterable object
+- type iterator
+- list
+- mutable type immutable type
+- id function
+- object equality
+- side effect
+- aliasing
+- cloning
+- shallow copy
+- deep copy
+- list comprehension
+- higher-order function
+- whitespace character
+- set
+- hashable type
+- dictionary
+- keys
+- value
+- view object
+- dictionary comprehension
+- book cipher
