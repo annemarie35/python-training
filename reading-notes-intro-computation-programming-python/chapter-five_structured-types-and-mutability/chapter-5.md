@@ -315,4 +315,21 @@ Not all types of objects can be elements of sets. All objects in a set must be `
 - All objects of Python's scalar immutable types are hashable, and no object of Python's built-in mutable types is hashable. 
 - An object of a non-scalar immutable type (e.g., a tuple) is hashable if all of its elements are hashable.
 
-## Dictionnaries
+## Dictionaries
+
+Objects of type `dict` (short for dictionary) are like `lists` except that we index them using `keys` rather than integers.
+Any hashable object can be used as a key.
+Think of a dictionary as a set of key/value pairs.
+```python
+  month_numbers = {'Jan':1, 'Feb':2, 'Mar':3, 'Apr':4,'May':5,  1:'Jan', 2:'Feb', 3:'Mar', 4:'Apr', 5:'May'}
+  print('The third month is ' + month_numbers[3])
+```
+The entries in a dict cannot be accessed using an index, `month_numbers[1]` unambiguously refers to the entry with the `key` 1 rather than the second entry. 
+
+Whether a key is defined in a dictionary can be tested using the `in` operator.
+Like lists, dictionaries are **mutable**, we can:
+- add an entry by writing, for example, `month_numbers['June'] = 6 `
+- change an entry by writing, for example, `month_numbers['May'] = 'V'`.
+
+Some common operations on dicts:
+![Some common operations on dicts](figure_5-10.png)
