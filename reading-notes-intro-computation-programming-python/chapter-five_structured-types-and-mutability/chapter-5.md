@@ -333,3 +333,19 @@ Like lists, dictionaries are **mutable**, we can:
 
 Some common operations on dicts:
 ![Some common operations on dicts](figure_5-10.png)
+
+## Dictionary Comprehension
+
+Dictionary comprehension is similar to list comprehension: `{key: value for id1, id2 in iterable if test}` but the key difference is that it uses **two values** to create each element of the dic.
+
+### Cypher.
+A `cipher` is an `algorithm` that maps a plain text (a text that can be easily read by a human) to a crypto text.
+The simplest implementation are substitution ciphers that replace each character in the plain text by a string, using a `key`.
+A `book cipher` is a cipher for which the key is derived from a book.
+
+> The whole point of a book cipher is that the sender sends an encrypted message, but not any information about the keys.
+> The only thing the receiver needs to decode the message is access to the book that the encoder used.
+
+If a character occurs in the plain text but not in the book, something bad happens. 
+The code_keys dictionary will map each such character to `-1`, and decode_keys will map -1 to whatever the last character in the book happens to be.
+

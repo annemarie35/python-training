@@ -144,3 +144,42 @@ apply_to_each(L, abs)
 print('L = ', L)
 apply_to_each(L, lambda x: x**2)
 print('L = ', L)
+
+# Dictionary comprehension
+
+number_to_word = { 1: 'one', 2:'two', 3: 'three', 4: 'four', 10: 'ten'}
+word_to_number = {w: d for d, w in number_to_word.items()}
+print(word_to_number) # {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'ten': 10}
+print('items', number_to_word.items())
+
+gen_code_keys = (lambda book, plain_text:({c: str(book.find(c)) for c in plain_text}))
+book = 'Once upon a time, in a house in a land far away,'
+print(gen_code_keys(book, plain_text='o'))
+
+don_quixote_book = 'In a village of La Mancha, the name of which I have no desire to call to mind, there lived not long since one of those gentlemen that keep a lance in the lance-rack, an old buckler, a lean hack, and a greyhound for coursing.'
+print(gen_code_keys(don_quixote_book, plain_text='I')) # Prints {'I': '0'}
+print(gen_code_keys(don_quixote_book, plain_text='Z')) # Prints {'Z': '-1'}
+
+
+encoder = (
+    lambda code_keys,
+           plain_text: ''.join(['*' + code_keys[c] for c in plain_text])[1:]
+)
+
+encrypt = (
+    lambda book,
+           plain_text: encoder(gen_code_keys(book, plain_text), plain_text)
+)
+
+print(encrypt(don_quixote_book, plain_text='no is no'))
+print(encrypt(don_quixote_book, plain_text='z zz e z ZZ Z'))
+
+gen_decode_keys = (
+    lambda book,
+           cipher_text: {
+        s: book[int(s)] for s in cipher_text.split('*')
+    }
+)
+
+print(gen_decode_keys(don_quixote_book, '1*13*2*6*57*2*1*13'))
+print(gen_decode_keys(don_quixote_book, '199*1')) # IndexError: string index out of range
