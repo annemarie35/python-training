@@ -6,6 +6,47 @@
 Python 2.0 in 2000
 Python 3.0 in 2008
 
+## Paradigms
+
+### Imperative 
+
+Python is an imperative programming language
+> Imperative programming is a programming paradigm of software that uses statements that change a program's state. (...)
+> An imperative program consists of commands for the computer to perform. 
+> Imperative programming focuses on describing how a program operates step by step rather than on high-level descriptions of its expected results.
+
+[Source: WP](https://en.wikipedia.org/wiki/Imperative_programming)
+
+
+
+#### Procedural
+
+> Procedural programming is a type of imperative programming in which the program is built from one or more procedures (also termed subroutines or functions)
+[Source: WP](https://en.wikipedia.org/wiki/Imperative_programming)
+
+Procedural programming is supported by :
+- C
+- Pascal
+- Python
+- Java
+- C++
+
+
+#### Oriented-object
+
+Oriented-object programming is supported by :
+- Smalltalk
+- Python
+- Java
+- C++
+
+### Declarative
+
+SQL is a declarative programming langauge.
+> Focuses on what the program should accomplish without specifying all the details of how the program should achieve the result.
+
+[Source: WP](https://en.wikipedia.org/wiki/Imperative_programming)
+
 
 ## Script, interpreter
 
@@ -505,19 +546,91 @@ You can tell Python which encoding to use to read teh file by inserting a specia
 
 ### Straight-line 
 
-> Straight-line programs : they execute one statement after another, in the order in which they appear. The kind of computation we can describe are noty very interesting.
+> Straight-line programs : they execute one statement after another, in the order in which they appear. The kind of computation we can describe are not very interesting.
+
+This default behavior is called `sequential` program, as opposed to `branched`.
+
+> Sequential execution is the most basic structure. Although not all code is sequential in nature, imperative code is. 
+[Source : WP on Control flow](https://en.wikipedia.org/wiki/Control_flow#Sequence)
+
+In sequential program, each and every instruction will be executed in the order they appear in source code.
+Its behavior is deterministic: you can say from the very start that it will end. 
 
 ### Branching program
 
-Note : The definition of branching program in the book seems limited to conditionals, as the author introduce the while loop implying it does not belong to branching program.
+#### What is branching ?
+
+The definition of branching program in the book seems limited to conditionals, as the author introduce the while loop implying it does not belong to branching program.
 > Most computational tasks cannot be accomplished using branching programs (...). When we want a program to do the same thing many times, we can use iteration.   
 
-But Wikipedia suggest branching include conditional and looping; we'll follow this way for headers.
+Wikipedia says branching include conditional and looping.
 > A branch is an instruction in a computer program that can cause a computer to begin executing a different instruction sequence and thus deviate from its default behavior of executing instructions in order.
 
 > Branch instructions are used to implement control flow in program loops and conditionals (i.e., executing a particular sequence of instructions only if certain conditions are satisfied).  
 
-[Source: WP](https://en.wikipedia.org/wiki/Branch_(computer_science)#cite_note-1)
+[Source: WP on Branch](https://en.wikipedia.org/wiki/Branch_(computer_science)#cite_note-1)
+
+
+In addition, it clearly distinguishes between both.
+> A branch instruction can be either 
+> - an unconditional branch, which always results in branching
+> - a conditional branch, which may or may not cause branching depending on some condition. 
+
+[Source: WP on Branch](https://en.wikipedia.org/wiki/Branch_(computer_science))
+
+We'll follow this convention by referencing condition and unconditional in branching header.
+
+#### More on branches
+
+This section is not covered in the book.
+
+##### Why the name
+
+The word `branch` for code source may come from an analogy : 
+- with the tree stem (botanical branch);
+- the tree being the program itself, in the form of a `abstract syntax tree` (AST).
+[More: WP on AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
+
+Side note:
+AST is actually a graph, and what is called `branch` in AST is called `edge` in graph theory.
+That's not very helping for us, as the only way to pair `branch` with `edge` would be to add an `h`.
+[More: WP on Graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
+
+The program source code, viewed as a graph, include :
+- a trunk, the main part of the program;
+- a departure from the main part.
+
+This departure is a branch. It is confusing, as in botanics, branches does not merge back into the trunk, whereas in computer science they usually do.
+If you think of a fork as in road, you lose the point of having a main part.
+[Reference: WP on Gore](https://en.wikipedia.org/wiki/Gore_(road))
+
+Another use, prior to computer science, express the idea faithfully, it is the railroad branch line. 
+> A branch line is a secondary railway line which branches off a more important through route, usually a main line. 
+[Source: WP on branch line](https://en.wikipedia.org/wiki/Branch_line)
+
+##### Branch in tests
+
+Branches are also used in testing in the `branch coverage` indicator.
+
+[Source: WP on Code coverage](https://en.wikipedia.org/wiki/Code_coverage)
+
+If : 
+- the test launched a program execution which entered a branch;
+- which means it executed at least the first statement in the branch (not only the condition);
+- it is said the branch is `covered` by the test.  
+
+If you want one test to catch a regression, its branch coverage should at least include the branch which cause the regression.
+
+This is not sufficient, as you need: 
+- an `assertion` (which can cause the test to fail);
+- the expected value of the assertion to be correct.
+
+To sump up, a branch coverage can only be used in one way - to guess if the test suite cannot prevent regression:
+- if the branch coverage is low, you may guess the test suite cannot prevent regression;
+- if the branch coverage is high, you cannot conclude the test suite will prevent regression.
+
+The code coverage can only indicate dangerous zones, not safe ones.
+If you want to know if the zone is safe, in an automated way, you can only rely on `mutation testing`.
 
 #### Conditional
 
@@ -572,6 +685,8 @@ In other languages, conditional expression is implemented as an operator `? :`, 
 
 ##### Conditional statement, if
 
+###### Overview
+
 A conditional statement execute (or not) a block of code. 
 
 A conditional statement has 3 parts :
@@ -587,7 +702,19 @@ else:
 print('Done with conditional')
 ```
 
-##### Test
+The Pascal version: 
+- has an extra `then`;
+- use simple equal in the test;
+- does not rely on indentations
+
+```pascal
+if x mod 2 = 0 then WriteLn('Even')
+    else WriteLn('Odd');
+WriteLn('Done with conditional')    
+```
+
+
+###### Test
 
 The test can be any boolean expression.
 ```python
@@ -596,7 +723,20 @@ if sunHasSetIn and LightIsOn
 if x < y and x < z #compound Boolean expression
 ```
 
-##### Code blocks
+The test does not require parentheses, unless you need to override precedence rules.
+
+The precedence, from high to low :
+- not;
+- and;
+- or.
+
+```python
+not a and b or c == ((not a) and b) or c # True
+not a and b or c != (not a and b) or c   # True
+```
+
+
+###### Code blocks
 
 Blocks of code should be indented from the `if` to be valid.
 
@@ -608,6 +748,8 @@ If so, it is said that conditional statements are `nested`.
 
 ##### Limitations
 
+The author introduce algorithmic complexity now.
+
 > Conditionals allow us to write programs that are more interesting than straight-line programs, but the class of branching programs is still quite limited. One way to think about the power of a class of programs is in terms of how long they can take to run. Assume that each line of code takes one unit of time to execute. If a straight-line program has n lines of code, it will take n units of time to run. What about a branching program with n lines of code ? It might take less than n units of time to run, but it cannot take more, since each line of code is executed at most once.
 
 > A program for which the maximum running time is bounded by the length of the program is said to run in constant time. This does not mean that each time the program is run it executes the same number of steps. It means that there exists a constant, k, such that the program is guaranteed to take no more than k steps to run. This implies that the running time does not grow with the size of the input to the program.
@@ -617,48 +759,257 @@ If so, it is said that conditional statements are `nested`.
 > The study of the intrinsic difficulty of problems is the topic of computational complexity. We will return to this topic several times in this book.
   Fortunately, we need only one more programming language construct, iteration, to allow us to write programs of arbitrary complexity.
 
+Let's point the `algorithmic` complexity cannot be lesser, but can be greater, than the intrinsic difficulty of `problems`.
+We strive to introduce as less complexity as needed in our programs, and what we can't control is the problem's complexity.
+What we control is our implementation of (one of) the problem solution.
+If our implementation works, but is more difficult to understand that another implementation, we may have introduced some `accidental complexity`.
+
+> The complexity of software is an essential property, not an accidental one.
+
+[Source: Fred Brooks, No Silver bullet](https://www.cs.unc.edu/techreports/86-020.pdf)
+
 #### Iteration, looping
 
 ##### While
 
-most computational tasks cannot be accomplished using branching programs
-we use iteration when we want a program to do the same thing many times, a generic iteration also called a **looping**
-begins with a **test** like a **conditional statement** 
-- if the test evaluates to True, the program executes the **loop** body once then goes back to reevaluate the test
-- the process is repeated until the test evaluates to False, after which control passes to the code following the iteration statement
+Count from 0 to 10.
+```python
+index = 0
+up_to = 10
+while index <= up_to:
+    print(index)
+    index +=1
+```
+###### Structure
 
-we can use a **while** statement
+> Most computational tasks cannot be accomplished using branching programs.
+> Consider writing a program that ask for the number of X's
+
+[finger exercice](../../code/finger-ex-2-5.py) 
+
+In our own terms
+> > Most computational tasks cannot be accomplished using only sequence and conditional.
+
+> When we want a program to do the same thing many times, we can use iteration
+> A generic iteration (also called looping) in shown.
+> Like a conditional statement, it begins with a test. 
+> If the test evaluates to True, the program executes the loop body once, and then goes back to reevaluate the test
+> The process is repeated until the test evaluates to False, after which control passes to the code following the iteration statement
 
 **hand-simulating** the code using a pen and a paper or even a text editor
 
-[finger exercice](code/finger-ex-2-5.py)
+
+###### Options
+
+
+You've got two options in the `while` control structure, in the code block, which are:
+- `continue`, which cause all other statements in the block to be skipped, and going directly to the test; 
+- `break`, which cause all other statements in the block to be skipped, the test to be skipped, and the iteration stop.
+
+You will need them sometimes - but most of the time, as the saying goes, refrain from using them.
+> Just because you can doesn’t mean you should
+
+We use both of them here, and you can see for yourselves the code is hard to read.
+```python
+index = 0
+up_to = 10
+while True:
+    index +=1
+    if index == up_to :
+        break
+    if index % 2 != 0 :
+        continue
+    print(index)
+```
+
+A better version would be
+```python
+index = 1
+up_to = 10
+while index < up_to :
+    if index % 2 == 0 :
+       print(index)
+    index = index + 1
+```
+
+
+###### Halting problem
+
+Squaring an integer, the hard way
+```python
+x = 3
+ans = 0
+num iterations
+while (num_iterations < x):
+    ans = ans + x
+    num iterations = num iterations + 1
+print(f'{x}*{x} = {ans}')
+```
+
+> Suppose x < 0. Something very bad happens. Control will enter the loop, and each iteration will move num_iterations farther from x rather than closer to it.
+> The program will therefore continue executing the loop forever (or until something else bad, eg. an overflow error, occurs)
+
+This is known as the `infinite loop` problem. It's never infinite actually, as you stop the execution yourself or the program run out of resources (usually, memory).
+But you get the idea. This problem has also been named `the halting problem` in [chapter one](../chapter-one_what-is-computation/chapter-1.md)
+
+> The halting problem is the problem of determining (from a description of an arbitrary computer program and an input) whether the program will finish running, or continue to run forever. 
+> The halting problem is undecidable, meaning that no general algorithm exists that solves the halting problem for all possible program–input pairs
+
+[Source: WP on Halting Problem] https://en.wikipedia.org/wiki/Halting_problem
+
+Here, the task at hand is not to decide if your program is correct, but merely to pin dow that the new control structure can introduce a new bug type.
+If a program run indefinitely, it will never return the correct answer, and therefore not answer your problem.
+In short: pay attention to your test in `while` loops: it should evaluate to false once (be falsifiable).
+
+Especially, pay attention if it involves a variable supplied by the user. 
+You should not make implicit assumptions like `he won't dont that` - unless the risk of no-returning program is acceptable for you and for him.  
+
+
+###### Limitations
+
+Sometimes a `while` loop is all you need.
+```python
+print('Guess a number, between 1 and 10')
+guess = 0
+while guess != 3 :
+   guess = int(input('Your guess ?'))
+print('You found the number')
+```
+
+But after a while, you notice that :
+- you use few, usually one, variables in the test ;
+- if you forgot to initialize the variable used in the test, before the test, you got errors ;  
+- if you change the value at the wrong time in the block, you got bugs. 
+
+If you need to access every element of a collection, the test will usually be "has the index reach the end of the collection ?"
+```python
+alphabet='abcdefg'
+index = 0
+while index < len(alphabet):
+    letter = alphabet[index]
+    print(letter)
+    index = index + 1
+```
+
+You will also come with the same bugs all the time, the [off-by-one](https://en.wikipedia.org/wiki/Off-by-one_error#Fencepost_error) problem :
+- you miss the first element;
+- you try to read after the last element.
+
+Furthermore, in the code block, you mix two concerns:
+- modifying a variable used in the test;
+- doing some calculations.
+ 
+For all these reasons, it would be nice to have one more control structure.
+
 
 ##### For, range
 
-iterating over a sequence, 'for variable in sequence'
-```python
-  total = 0
-  for num in (77, 11, 3):
-      total = total + num
-  print(total)
-```
-The **variable** following for **is bound** to the first value in the sequence, and the code block is **executed**.
-The expression (77, 11, 3) is a **tuple**, as a "sequence of value"
+###### Overview
 
-The built-in function **range** can generate a sequence of values, it will return a series of integers. It takes 3 int as argument with default values (can be negative) : start, stop and step.
-```python
-x= 4
-for i in range(x):
-print(i)
-```
-prints 0 1 2 3
+> The while loops we have used so far are highly stylized, often iterating over a sequence of integers. Python provides a language mechanism, the for loop, that can be used to simplify programs
+containing this kind of iteration.
 
-the arguments of the range function are evaluated just before the first iteration loop
-with nested loop, only the outer loop is concerned, the index of the inner loop will be reevaluated
+The control structure we need put together the modification of the variable used in the test and the test itself.
+It is named a `for`, and the grouping is done in a sequence. 
+
+```python
+for variable in sequence :
+    code block
+```
+
+The only communication between the code block and the `for` is through a variable; this variable cannot be used to modify the sequence, so we've got perfect isolation.
+
+> The variable following for is bound to the first value in the sequence, and the code block is executed. 
+> The variable is then assigned the second value in the sequence, and the code block is executed again.
+> The process continues until the sequence is exhausted or a break statement is executed within the code block
+
+The sequence can be a list of values, known as tuples, in parentheses: `(1, 2, 3)`.
+
+```python
+total = 0
+for num in (77, 11, 3):
+    total = total + num
+print(total)
+```
+
+It can also be a collection.
+```python
+alphabet='abcdefg'
+for letter in alphabet :
+    print(letter)
+```
+
+The sequence can be generated by a function, `range`.
+
+Let's compare both control structures, counting from 0 to 10.
+
+```python
+index = 0
+up_to = 10
+while index <= up_to:
+    print(index)
+    index = index + 1
+```
+
+```python
+up_to = 10
+for index in range(0, up_to + 1, 1) :
+    print(index)
+```
+
+You can even shorten it further : all index handling is done by the control structure. 
+```python
+for index in range(0, 11) :
+    print(index)
+```
+
+We can also compare collection traversing.
+```python
+alphabet='abcdefg'
+index = 0
+while index < len(alphabet):
+    print(alphabet[index])
+    index = index + 1
+```
+
+```python
+alphabet='abcdefg'
+for index in range(0, len(alphabet)) :
+    print(alphabet[index])
+```
+
+
+###### range
+
+> The sequence of values bound to variable is most commonly generated using the built-in function range, which returns a series of integers. 
+> The range function takes three integer arguments: start, stop, and step. 
+> It produces the progression start, start + step, start + 2*step, etc. 
+>
+> If step is positive, the last element is the largest integer such that (start + i*step) is strictly less than stop. 
+> If step is negative, the last element is the smallest integer such that (start + i*step) is greater than stop. 
+>
+> For example, the expression range(5, 40, 10) yields the sequence 5, 15, 25, 35, and the expression range (40, 5, -10) yields the sequence 40, 30, 20, 10.
+>
+> If the first argument to range is omitted, it defaults to 0, and if the last argument (the step size) is omitted, it defaults to 1. 
+> For example, range(0, 3) and range(3) both produce the sequence 0, 1, 2. 
+
+
+###### nested loops
+
+The arguments of the range function are evaluated just before the first iteration loop with nested loop, only the outer loop is concerned, the index of the inner loop will be reevaluated
 see `nested_loops` in [code](/code/chap_2_code.py) 
 
-
 [finger exercice](code/finger-ex-2-6.py)
+
+
+#### Something else ? 
+
+There are other control structures, but they kind of disguised.
+We'll see them later in the book, but we can at least name two of them : `exceptions` and `polymorphism`. 
+
+There is a very powerful control structure, which can be used to implement conditional and looping, and many more.
+
+It is not available in Python, you can read [why here](https://docs.python.org/3/faq/design.html#why-is-there-no-goto).
 
 ## 2.7 Style matters
 
