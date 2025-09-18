@@ -10,7 +10,6 @@ def intersect(tuple1, tuple2):
 
 print(intersect((1, 'a', 2), ('b', 2, 'a')))
 
-
 def find_extreme_divisors(n1, n2):
     """
     Assumes that n1 and n2 are positive ints.
@@ -30,6 +29,7 @@ print(min_divisor)
 print(max_divisor)
 
 # Lists and mutability
+
 L1 = [1, 2, 3]
 L2 = L1[-1::-1] # Prints [3, 2, 1]
 for index in range(len(L1)):
