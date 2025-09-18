@@ -5,6 +5,7 @@
 
 Tuples are immutable ordered sequences og elements (like strings),each can be of any type, not need to be all the same type.
 Literals of type tuple are written by enclosing a comma- separated list of elements within parentheses.
+
 For example:
 
 ```Python
@@ -24,7 +25,8 @@ And the `in` operator can be used to test if a tuple contains a specific value.
 
 ### Multiple Assignment
 
-If you know the length of a sequence (e.g., a tuple or a string), it can be convenient to use Python's `multiple assignment` statement to extract the individual elements.
+If you know the length of a sequence (e.g., a tuple or a string), it can be convenient to use Python's `multiple assignment` statement to extract the individual elements. 
+
 For example `x, y = (3, 4)`
 
 ## Ranges and Iterables
@@ -32,17 +34,18 @@ For example `x, y = (3, 4)`
 ### Ranges
 The function `range` produces an object of type `range`, a sequence of integers.
 Like strings and tuples, objects of type range are `immutable`.
-All the operations on tuples (except concatenation and repetition) are available for ranges :
-- for example `range(10)[2:6][2]`
+
+All the operations on tuples (except concatenation and repetition) are available for ranges:
+- for example: `range(10)[2:6][2]`
 - `==` operator cans compare objects of type `range`, it returns `True` if two ranges represent the same sequence of integers. 
   - For example, `range(0, 7, 2) == range(0, 8, 2)` evaluates to True
   - `range(0, 7, 2) == range(6, -1, -2)` evaluates to False because order is different
 
-The most common use of `range` if in `for` loops. In Python 3, `range`is a special case of an `iterable oject`
+The most common use of `range` if in `for` loops. In Python 3, `range`is a special case of an `iterable oject`/
 
 ### Iterables
 All iterables types have a method `__iter__` that returns an object of `type iterator` that can then be used in a for loop to return a sequence of objects, one at a time.
-Python has many built-in iterable types, including strings, lists, and dictionaries.
+Python has many built-in `iterable types`, including strings, lists, and dictionaries.
 
 Many useful built-in functions operate on iterables, e.g. 
 - `sum`: can be applied to an iterable of numbers
@@ -54,12 +57,13 @@ Many useful built-in functions operate on iterables, e.g.
 
 ### Lists
 Like a tuple, a `list` is an ordered sequence of values, where each value is identified by an `index`. We use square brackets rather than parentheses.
-- [] is an empty list
-- [,] is a singleton
-- lists are iterables, we can use a for statement to iterate over the elements of the list.
+- `[]` is an empty list
+- `[,]` is a singleton
+- lists are iterables, we can use a `for` statement to iterate over the elements of the list.
 - we can also index into lists and slice
 
-Using square brackets for three different purposes :
+Using square brackets for three different purposes:
+
 1. literals of type list,
 2. indexing into iterables,
 3. slicing iterables,
@@ -108,7 +112,7 @@ This can be convenient, but it can also be treacherous.
 [finger exercice](/code/finger_ex_5_3.py)
 
 
-The interaction of aliasing and mutability with default parameter values is something to watch out for
+The interaction of aliasing and mutability with default parameter values is something to watch out for.
 ```python
 def append_val(val, list_1 = []):
     list_1.append(val)
@@ -133,10 +137,12 @@ L1.append(L2)
 print('L1 =', L1) # Print [1, 2, 3, 4, 5, 6, [4, 5, 6]]
 ```
 
-Notice that the operator `+` does not have a side effect. It creates a new list and returns it. In contrast, `extend` and `append each mutate L1.
+Notice that the operator `+` does not have a side effect.
+It creates a new list and returns it. 
+In contrast, `extend` and `append` each mutate L1.
 
 ### Methods associated with lists
-Note that all of these except `count` and `index mutate the list.
+Note that all of these except `count` and `index` mutate the list.
 
 ![img.png](figure_5-4.png)
 
@@ -202,14 +208,14 @@ print(L2) # Prints [[2, 3], [2, 3]]
 
 ## List comprehension
 
-`List comprehension provides a concise way to apply an operation to the sequence values provided by iterating over an iterable value:
-- it creates a new list
-- is an expression of the form `[expr for elem in iterable if test]`
-- it provides a convenient way to initialize lists
+`List comprehension` provides a concise way to apply an operation to the sequence values provided by iterating over an iterable value:
+- it creates a new list,
+- it is an expression of the form `[expr for elem in iterable if test]`,
+- it provides a convenient way to initialize lists,
   - `[[] for _ in range(10)]` generates a list containing 10 distinct (i.e., non-aliased) empty lists. The variable name `_` indicates that the values of that variable are not used in generating the elements of list, i.e., it is merely a `placeholder`.
 
 ### Nested lists
-Python allows multiple `for` statements within a list comprehension
+Python allows multiple `for` statements within a list comprehension.
 ```python
 print([[(x,y) for x in range(6) if x%2 == 0]
        for y in range(6) if y%3 == 0])
@@ -243,7 +249,7 @@ for i in map(min, L1, L2):
 | tuple |     any type     |      (), (3,), ('abc', 4) |      No |
 | range |     integers     | range(10), range(1, 10,2) |      No |
 | list  |     any type     |       [], [3], ['abc', 4] |     Yes |
-Comparison of sequence types
+_Comparison of sequence types_
 
 ![img.png](figure_5-7.png)
 
@@ -256,13 +262,13 @@ for e in L:
         even_elems.append(e)
 ```
 
-Strinss can contain only characters, they are less versatile than tuples or lists, but they have many useful built-in methods.
+Strings can contain only characters, they are less versatile than tuples or lists, but they have many useful built-in methods.
 Since strings are *immutable*, these all return values and have no *side effects*.
 
 ![img.png](figure_5-8.png)
 
 One of the more useful is `split`, the second argument specifies the separator that is used to split the first argument into a `sequence of `substrings`. 
-It can be optionnal and if omitted, the first string is split using arbitrary strings of whitespace characters (space, tab, newline, return, and formfeed)
+It can be optional and if omitted, the first string is split using arbitrary strings of whitespace characters (space, tab, newline, return, and formfeed).
 Since Python strings support Unicode, the complete list of whitespace characters is much longer (see https://en.wikipedia.org/wiki/Whitespace_character).
 
 ```python
@@ -274,15 +280,16 @@ print('My favorite professor–John G.–rocks'.split())
 ## Sets
 
 `Sets` are similar to the notion of a set in mathematics in that they are `unordered` collections of `unique` elements.
-They are denoted using what programmers call curly braces and mathematicians call set braces, e.g.,
-Example: `baseball_teams = {'Dodgers', 'Giants', 'Padres', 'Rockies'}`
+They are denoted using what programmers call curly braces and mathematicians call set braces, e.g.:
 
-- Unordered so attempting to index into a set, e.g., evaluating `baseball_teams[0]`, generates a runtime error
-- We can use a `for` statement to iterate over the elements of a set (the order in which the elements are produced is undefined)
-- Sets are mutable
-  - We add a single element to a set using the `add` method
-  - We add multiple elements to a set by passing a collection of elements (e.g., a list) to the `update` method
-  - Elements can be removed from a set using the `remove` method, which raises an error if the element is not in the set or the `discard` method, which does not raise an error if the element is not in the set
+`baseball_teams = {'Dodgers', 'Giants', 'Padres', 'Rockies'}`
+
+- Unordered so attempting to index into a set, e.g., evaluating `baseball_teams[0]`, generates a runtime error.
+- We can use a `for` statement to iterate over the elements of a set (the order in which the elements are produced is undefined).
+- Sets are mutable:
+  - We add a single element to a set using the `add` method.
+  - We add multiple elements to a set by passing a collection of elements (e.g., a list) to the `update` method.
+  - Elements can be removed from a set using the `remove` method, which raises an error if the element is not in the set or the `discard` method, which does not raise an error if the element is not in the set.
 
 ```python
 baseball_teams = {'Rockies'}
